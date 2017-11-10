@@ -1,6 +1,6 @@
 ﻿namespace LeonUI
 {
-    partial class Form1
+    partial class UserControl1
     {
         /// <summary>
         /// 必需的设计器变量。
@@ -20,7 +20,7 @@
             base.Dispose(disposing);
         }
 
-        #region Windows 窗体设计器生成的代码
+        #region 组件设计器生成的代码
 
         /// <summary>
         /// 设计器支持所需的方法 - 不要修改
@@ -28,12 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "Form1";
         }
 
         #endregion
     }
 }
-
