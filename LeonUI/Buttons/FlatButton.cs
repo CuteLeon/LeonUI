@@ -50,18 +50,24 @@ namespace LeonUI.Controls
         {
             InitializeComponent();
 
+            base.AutoSize = false;
             this.AutoEllipsis = true;
             this.BackColor = NormalColor;
             this.DoubleBuffered = true;
             this.ImageAlign = ContentAlignment.MiddleCenter;
             this.TextAlign = ContentAlignment.MiddleCenter;
-            this.AutoSize = false;
             this.ForeColor = Color.White;
 
             MouseEnter += new EventHandler((s, e) => { BackColor = EnterColor; Invalidate(); });
             MouseDown += new MouseEventHandler((s, e) => { BackColor = DownColor; Invalidate(); });
             MouseUp += new MouseEventHandler((s, e) => { BackColor = EnterColor; Invalidate(); });
             MouseLeave += new EventHandler((s, e) => { BackColor = NormalColor; Invalidate(); });
+        }
+
+        protected override void InitLayout()
+        {
+            base.InitLayout();
+            base.AutoSize = false;
         }
     }
 }

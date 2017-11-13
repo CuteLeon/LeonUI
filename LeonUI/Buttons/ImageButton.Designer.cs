@@ -1,6 +1,6 @@
 ﻿namespace LeonUI.Controls
 {
-    partial class ImageBitmap
+    partial class ImageButton
     {
         /// <summary> 
         /// 必需的设计器变量。
@@ -15,10 +15,10 @@
         {
             if (disposing && (components != null))
             {
-                NormalBitmap.Dispose();
-                EnterBitmap.Dispose();
-                DownBitmap.Dispose();
-                components.Dispose();
+                NormalBitmap?.Dispose();
+                EnterBitmap?.Dispose();
+                DownBitmap?.Dispose();
+                components?.Dispose();
             }
             base.Dispose(disposing);
         }

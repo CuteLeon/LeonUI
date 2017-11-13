@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BitmapProcessor\BitmapProcessor.cs" />
     <Compile Include="Buttons\FlatButton.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -53,6 +54,9 @@
     </Compile>
     <Compile Include="Buttons\ImageButton.Designer.cs">
       <DependentUpon>ImageButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Buttons\MaxButton.cs">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Labels\ShadowLabel.cs" />
     <Compile Include="Forms\LeonMessageBox.cs">
@@ -97,6 +101,7 @@
     <EmbeddedResource Include="UnityResource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>UnityResource.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

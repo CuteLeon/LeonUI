@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.Drawing;
 using System.Threading;
 using LeonUI.Forms;
+using LeonUI.Controls;
 
 namespace LeonUI.Tests
 {
