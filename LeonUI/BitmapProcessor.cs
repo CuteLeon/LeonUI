@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 
-namespace LeonUI.BitmapProcessor
+namespace LeonUI
 {
     static class BitmapProcessor
     {

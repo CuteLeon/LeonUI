@@ -12,6 +12,20 @@ namespace LeonUI.Forms
 {
     public partial class LeonMessageBox : Form
     {
+        private Pen borderPen = new Pen(Color.DeepSkyBlue);
+        /// <summary>
+        /// 弹窗边框颜色
+        /// </summary>
+        public Color BorderColor
+        {
+            get => borderPen.Color;
+            set
+            {
+                borderPen.Color = value;
+                this.Invalidate();
+            }
+        }
+
         public LeonMessageBox()
         {
             InitializeComponent();
@@ -22,6 +36,8 @@ namespace LeonUI.Forms
             this.DoubleBuffered = true;
             this.AutoScaleMode = AutoScaleMode.Dpi;
             this.BackgroundImageLayout = ImageLayout.Stretch;
+
+            TitleLabel.MouseDown += new MouseEventHandler( UnityModule.MoveFormViaMouse);
         }
 
         private void LeonMessageBox_Shown(object sender, EventArgs e)
@@ -47,5 +63,20 @@ namespace LeonUI.Forms
                 { }
             }
         }
+
+        private void LeonMessageBox_Paint(object sender, PaintEventArgs e)
+        {
+            e.Graphics.DrawLines(borderPen,
+                new Point[]
+                {
+                    new Point(0,0),
+                    new Point(this.Width-1,0),
+                    new Point(this.Width-1,this.Height-1),
+                    new Point(0,this.Height-1),
+                    new Point(0,0)
+                }
+            );
+        }
+
     }
 }

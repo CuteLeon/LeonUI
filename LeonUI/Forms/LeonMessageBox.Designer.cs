@@ -34,7 +34,7 @@
             this.IconLabel = new System.Windows.Forms.Label();
             this.BottomPanel = new LeonUI.Panels.Panel();
             this.TopPanel = new LeonUI.Panels.Panel();
-            this.CloseButton = new LeonUI.Controls.ImageButton();
+            this.closeButton1 = new LeonUI.TitleButtons.CloseButton();
             this.TitleLabel = new System.Windows.Forms.Label();
             this.MiddlePanel.SuspendLayout();
             this.TopPanel.SuspendLayout();
@@ -46,7 +46,7 @@
             this.MiddlePanel.Controls.Add(this.MessageLabel);
             this.MiddlePanel.Controls.Add(this.IconLabel);
             this.MiddlePanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MiddlePanel.Location = new System.Drawing.Point(0, 30);
+            this.MiddlePanel.Location = new System.Drawing.Point(1, 31);
             this.MiddlePanel.Margin = new System.Windows.Forms.Padding(0);
             this.MiddlePanel.Name = "MiddlePanel";
             this.MiddlePanel.Padding = new System.Windows.Forms.Padding(6);
@@ -80,9 +80,9 @@
             // 
             // BottomPanel
             // 
-            this.BottomPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.BottomPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
             this.BottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.BottomPanel.Location = new System.Drawing.Point(0, 130);
+            this.BottomPanel.Location = new System.Drawing.Point(1, 131);
             this.BottomPanel.Margin = new System.Windows.Forms.Padding(0);
             this.BottomPanel.Name = "BottomPanel";
             this.BottomPanel.Size = new System.Drawing.Size(360, 40);
@@ -91,30 +91,25 @@
             // TopPanel
             // 
             this.TopPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.TopPanel.Controls.Add(this.CloseButton);
+            this.TopPanel.Controls.Add(this.closeButton1);
             this.TopPanel.Controls.Add(this.TitleLabel);
             this.TopPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.TopPanel.Location = new System.Drawing.Point(0, 0);
+            this.TopPanel.Location = new System.Drawing.Point(1, 1);
             this.TopPanel.Margin = new System.Windows.Forms.Padding(0);
             this.TopPanel.Name = "TopPanel";
             this.TopPanel.Size = new System.Drawing.Size(360, 30);
             this.TopPanel.TabIndex = 0;
             // 
-            // CloseButton
+            // closeButton1
             // 
-            this.CloseButton.AutoEllipsis = true;
-            this.CloseButton.BackColor = System.Drawing.Color.Transparent;
-            this.CloseButton.Dock = System.Windows.Forms.DockStyle.Right;
-            this.CloseButton.DownBitmap = global::LeonUI.UnityResource.Close_2;
-            this.CloseButton.EnterBitmap = global::LeonUI.UnityResource.Close_1;
-            this.CloseButton.ForeColor = System.Drawing.Color.White;
-            this.CloseButton.Image = global::LeonUI.UnityResource.Close_0;
-            this.CloseButton.Location = new System.Drawing.Point(330, 0);
-            this.CloseButton.Name = "CloseButton";
-            this.CloseButton.NormalBitmap = global::LeonUI.UnityResource.Close_0;
-            this.CloseButton.Size = new System.Drawing.Size(30, 30);
-            this.CloseButton.TabIndex = 4;
-            this.CloseButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.closeButton1.BackColor = System.Drawing.Color.Transparent;
+            this.closeButton1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("closeButton1.BackgroundImage")));
+            this.closeButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.closeButton1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.closeButton1.Location = new System.Drawing.Point(330, 0);
+            this.closeButton1.Name = "closeButton1";
+            this.closeButton1.Size = new System.Drawing.Size(30, 30);
+            this.closeButton1.TabIndex = 0;
             // 
             // TitleLabel
             // 
@@ -125,6 +120,7 @@
             this.TitleLabel.ForeColor = System.Drawing.Color.DeepSkyBlue;
             this.TitleLabel.Location = new System.Drawing.Point(0, 0);
             this.TitleLabel.Name = "TitleLabel";
+            this.TitleLabel.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
             this.TitleLabel.Size = new System.Drawing.Size(360, 30);
             this.TitleLabel.TabIndex = 3;
             this.TitleLabel.Text = "LeonMessageBox";
@@ -137,7 +133,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(360, 170);
+            this.ClientSize = new System.Drawing.Size(362, 172);
             this.Controls.Add(this.MiddlePanel);
             this.Controls.Add(this.BottomPanel);
             this.Controls.Add(this.TopPanel);
@@ -145,10 +141,12 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "LeonMessageBox";
+            this.Padding = new System.Windows.Forms.Padding(1);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "LeonMessageBox";
             this.Load += new System.EventHandler(this.LeonMessageBox_Load);
             this.Shown += new System.EventHandler(this.LeonMessageBox_Shown);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.LeonMessageBox_Paint);
             this.MiddlePanel.ResumeLayout(false);
             this.TopPanel.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -162,6 +160,6 @@
         private System.Windows.Forms.Label IconLabel;
         private System.Windows.Forms.Label MessageLabel;
         private System.Windows.Forms.Label TitleLabel;
-        private Controls.ImageButton CloseButton;
+        private TitleButtons.CloseButton closeButton1;
     }
 }
