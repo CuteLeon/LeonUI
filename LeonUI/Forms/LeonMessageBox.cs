@@ -14,21 +14,53 @@ namespace LeonUI.Forms
     {
         private Pen borderPen = new Pen(Color.DeepSkyBlue);
         /// <summary>
-        /// 弹窗边框颜色
+        /// 弹窗主题颜色
         /// </summary>
-        public Color BorderColor
+        public Color ThemeColor
         {
             get => borderPen.Color;
             set
             {
+                TitleLabel.ForeColor = value;
+                MessageLabel.ForeColor = value;
                 borderPen.Color = value;
                 this.Invalidate();
             }
         }
 
-        public LeonMessageBox()
+        /// <summary>
+        /// 弹窗消息类型
+        /// </summary>
+        public enum IconType
+        {
+            /// <summary>
+            /// 消息
+            /// </summary>
+            Info,
+            /// <summary>
+            /// 询问
+            /// </summary>
+            Question,
+            /// <summary>
+            /// 警告
+            /// </summary>
+            Warning,
+            /// <summary>
+            /// 错误
+            /// </summary>
+            Error
+        }
+
+        public LeonMessageBox(string Title, string Message, IconType IconType, params object[] MessageValues):
+            this(Title, string.Format(Message,MessageValues),IconType){ }
+
+        public LeonMessageBox(string Title, string Message, IconType IconType)
         {
             InitializeComponent();
+
+            TitleLabel.Text = Title;
+            MessageLabel.Text = Message;
+            IconLabel.Image = UnityResource.ResourceManager.GetObject(IconType.ToString()) as Image;
         }
 
         private void LeonMessageBox_Load(object sender, EventArgs e)
@@ -51,7 +83,7 @@ namespace LeonUI.Forms
                     this.BackgroundImage = Owner.BackgroundImage;
                 }
                 catch
-                {}
+                { }
             }
             else
             {

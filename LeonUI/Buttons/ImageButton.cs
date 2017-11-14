@@ -64,8 +64,6 @@ namespace LeonUI.Controls
             this.ImageAlign = ContentAlignment.MiddleCenter;
             this.TextAlign = ContentAlignment.MiddleCenter;
             this.ForeColor = Color.White;
-            this.Text = "";
-            base.Text = "";
 
             MouseEnter += new EventHandler((s,e)=> { Image = EnterBitmap; Invalidate();});
             MouseDown += new MouseEventHandler((s,e)=> { Image = DownBitmap; Invalidate();});

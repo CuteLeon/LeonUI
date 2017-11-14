@@ -16,7 +16,7 @@ namespace LeonUI.Forms.Tests
         [TestMethod()]
         public void LeonMessageBoxTest()
         {
-            LeonMessageBox leonMessageBox = new LeonMessageBox();
+            LeonMessageBox leonMessageBox = new LeonMessageBox("123", "456", LeonMessageBox.IconType.Question) ;
             leonMessageBox.ShowDialog(
                 new Form()
                 {
@@ -25,5 +25,6 @@ namespace LeonUI.Forms.Tests
                 }
             );
         }
+
     }
 }

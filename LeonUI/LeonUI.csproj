@@ -49,6 +49,12 @@
     <Compile Include="Buttons\FlatButton.Designer.cs">
       <DependentUpon>FlatButton.cs</DependentUpon>
     </Compile>
+    <Compile Include="Buttons\BigButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Buttons\BigButton.Designer.cs">
+      <DependentUpon>BigButton.cs</DependentUpon>
+    </Compile>
     <Compile Include="Buttons\ImageButton.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -60,6 +66,12 @@
     </Compile>
     <Compile Include="Buttons\CloseButton.Designer.cs">
       <DependentUpon>CloseButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Buttons\LargeButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Buttons\LargeButton.Designer.cs">
+      <DependentUpon>LargeButton.cs</DependentUpon>
     </Compile>
     <Compile Include="Buttons\MinButton.cs">
       <SubType>UserControl</SubType>
@@ -185,6 +197,33 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Warning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BigButton_0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BigButton_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BigButton_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DefaultButton_0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DefaultButton_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DefaultButton_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LargeButton_0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LargeButton_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LargeButton_2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
