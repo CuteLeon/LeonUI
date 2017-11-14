@@ -61,6 +61,12 @@
     <Compile Include="Buttons\ImageButton.Designer.cs">
       <DependentUpon>ImageButton.cs</DependentUpon>
     </Compile>
+    <Compile Include="Buttons\RoundedButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Buttons\RoundedButton.Designer.cs">
+      <DependentUpon>RoundedButton.cs</DependentUpon>
+    </Compile>
     <Compile Include="TitleButtons\CloseButton.cs">
       <SubType>UserControl</SubType>
     </Compile>

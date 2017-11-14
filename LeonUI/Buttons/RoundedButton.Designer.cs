@@ -1,6 +1,6 @@
 ﻿namespace LeonUI.Controls
 {
-    partial class ImageButton
+    partial class RoundedButton
     {
         /// <summary> 
         /// 必需的设计器变量。
@@ -18,6 +18,9 @@
                 normalBitmap?.Dispose();
                 enterBitmap?.Dispose();
                 downBitmap?.Dispose();
+                renderedNormalBitmap?.Dispose();
+                renderedEnterBitmap?.Dispose();
+                renderedDownBitmap?.Dispose();
 
                 components?.Dispose();
             }

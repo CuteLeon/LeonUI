@@ -36,15 +36,15 @@
             this.TopPanel = new LeonUI.Panels.Panel();
             this.CloseButton = new LeonUI.TitleButtons.CloseButton();
             this.TitleLabel = new System.Windows.Forms.Label();
-            this.bigButton1 = new LeonUI.Controls.BigButton();
+            this.roundedButton1 = new LeonUI.Controls.RoundedButton();
             this.MiddlePanel.SuspendLayout();
-            this.BottomPanel.SuspendLayout();
             this.TopPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // MiddlePanel
             // 
             this.MiddlePanel.BackColor = System.Drawing.Color.White;
+            this.MiddlePanel.Controls.Add(this.roundedButton1);
             this.MiddlePanel.Controls.Add(this.MessageLabel);
             this.MiddlePanel.Controls.Add(this.IconLabel);
             this.MiddlePanel.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -67,6 +67,7 @@
             this.MessageLabel.TabIndex = 1;
             this.MessageLabel.Text = "LeonMessageBox";
             this.MessageLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.MessageLabel.Visible = false;
             // 
             // IconLabel
             // 
@@ -79,11 +80,11 @@
             this.IconLabel.Size = new System.Drawing.Size(60, 88);
             this.IconLabel.TabIndex = 0;
             this.IconLabel.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.IconLabel.Visible = false;
             // 
             // BottomPanel
             // 
             this.BottomPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            this.BottomPanel.Controls.Add(this.bigButton1);
             this.BottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.BottomPanel.Location = new System.Drawing.Point(1, 131);
             this.BottomPanel.Margin = new System.Windows.Forms.Padding(0);
@@ -130,20 +131,23 @@
             this.TitleLabel.Text = "LeonMessageBox";
             this.TitleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // bigButton1
+            // roundedButton1
             // 
-            this.bigButton1.AutoEllipsis = true;
-            this.bigButton1.BackColor = System.Drawing.Color.Transparent;
-            this.bigButton1.ForeColor = System.Drawing.Color.White;
-            this.bigButton1.Image = ((System.Drawing.Image)(resources.GetObject("bigButton1.Image")));
-            this.bigButton1.Location = new System.Drawing.Point(0, 0);
-            this.bigButton1.MaximumSize = new System.Drawing.Size(168, 54);
-            this.bigButton1.MinimumSize = new System.Drawing.Size(168, 54);
-            this.bigButton1.Name = "bigButton1";
-            this.bigButton1.Size = new System.Drawing.Size(168, 54);
-            this.bigButton1.TabIndex = 0;
-            this.bigButton1.Text = "bigButton1";
-            this.bigButton1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.roundedButton1.AutoEllipsis = true;
+            this.roundedButton1.BackColor = System.Drawing.Color.Transparent;
+            this.roundedButton1.CenterRectangle = new System.Drawing.Rectangle(17, 16, 70, 2);
+            this.roundedButton1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.roundedButton1.DownBitmap = ((System.Drawing.Bitmap)(resources.GetObject("roundedButton1.DownBitmap")));
+            this.roundedButton1.EnterBitmap = ((System.Drawing.Bitmap)(resources.GetObject("roundedButton1.EnterBitmap")));
+            this.roundedButton1.ForeColor = System.Drawing.Color.White;
+            this.roundedButton1.Image = ((System.Drawing.Image)(resources.GetObject("roundedButton1.Image")));
+            this.roundedButton1.Location = new System.Drawing.Point(66, 6);
+            this.roundedButton1.Name = "roundedButton1";
+            this.roundedButton1.NormalBitmap = ((System.Drawing.Bitmap)(resources.GetObject("roundedButton1.NormalBitmap")));
+            this.roundedButton1.Size = new System.Drawing.Size(288, 88);
+            this.roundedButton1.TabIndex = 2;
+            this.roundedButton1.Text = "roundedButton1";
+            this.roundedButton1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // LeonMessageBox
             // 
@@ -157,7 +161,6 @@
             this.Controls.Add(this.BottomPanel);
             this.Controls.Add(this.TopPanel);
             this.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "LeonMessageBox";
             this.Padding = new System.Windows.Forms.Padding(1);
@@ -167,7 +170,6 @@
             this.Shown += new System.EventHandler(this.LeonMessageBox_Shown);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.LeonMessageBox_Paint);
             this.MiddlePanel.ResumeLayout(false);
-            this.BottomPanel.ResumeLayout(false);
             this.TopPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -181,6 +183,6 @@
         private System.Windows.Forms.Label MessageLabel;
         private System.Windows.Forms.Label TitleLabel;
         private TitleButtons.CloseButton CloseButton;
-        private Controls.BigButton bigButton1;
+        private Controls.RoundedButton roundedButton1;
     }
 }
