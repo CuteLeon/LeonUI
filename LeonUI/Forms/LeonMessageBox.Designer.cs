@@ -68,7 +68,6 @@
             this.MessageLabel.TabIndex = 1;
             this.MessageLabel.Text = "LeonMessageBox";
             this.MessageLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.MessageLabel.Visible = false;
             // 
             // IconLabel
             // 
@@ -177,7 +176,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.White;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(362, 172);
             this.Controls.Add(this.MiddlePanel);
@@ -190,9 +188,11 @@
             this.Padding = new System.Windows.Forms.Padding(1);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "LeonMessageBox";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LeonMessageBox_FormClosing);
             this.Load += new System.EventHandler(this.LeonMessageBox_Load);
             this.Shown += new System.EventHandler(this.LeonMessageBox_Shown);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.LeonMessageBox_Paint);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.LeonMessageBox_KeyPress);
             this.MiddlePanel.ResumeLayout(false);
             this.BottomPanel.ResumeLayout(false);
             this.TopPanel.ResumeLayout(false);

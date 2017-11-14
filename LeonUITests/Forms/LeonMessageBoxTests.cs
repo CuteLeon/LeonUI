@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace LeonUI.Forms.Tests
 {
@@ -17,13 +18,13 @@ namespace LeonUI.Forms.Tests
         public void LeonMessageBoxTest()
         {
             LeonMessageBox leonMessageBox = new LeonMessageBox("123", "456", LeonMessageBox.IconType.Question) ;
-            leonMessageBox.ShowDialog(
+            Debug.Print( leonMessageBox.ShowDialog(
                 new Form()
                 {
                     Icon = Icon.FromHandle((Bitmap.FromFile(@"D:\MyPictures\FUI\_0008_19.jpg.jpg_I_R.jpg") as Bitmap).GetHicon()),
                     BackgroundImage = Bitmap.FromFile(@"D:\MyPictures\DesktopBackground\gamersky_03origin_05_20171014155457C.jpg")
                 }
-            );
+            ).ToString());
         }
 
     }

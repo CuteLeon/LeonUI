@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -57,6 +58,7 @@ namespace LeonUI.Forms
         public LeonMessageBox(string Title, string Message, IconType IconType)
         {
             InitializeComponent();
+            CheckForIllegalCrossThreadCalls = false;
 
             Text = Title;
             TitleLabel.Text = Title;
@@ -71,6 +73,7 @@ namespace LeonUI.Forms
             this.BackgroundImageLayout = ImageLayout.Stretch;
 
             TitleLabel.MouseDown += new MouseEventHandler( UnityModule.MoveFormViaMouse);
+            CloseButton.KeyPress += new KeyPressEventHandler(LeonMessageBox_KeyPress);
         }
 
         private void LeonMessageBox_Shown(object sender, EventArgs e)
@@ -79,6 +82,7 @@ namespace LeonUI.Forms
             {
                 try
                 {
+                    this.StartPosition = FormStartPosition.CenterParent;
                     this.Icon = this.Owner.Icon;
                     this.Font = this.Owner.Font;
                     this.BackgroundImage = Owner.BackgroundImage;
@@ -90,6 +94,7 @@ namespace LeonUI.Forms
             {
                 try
                 {
+                    this.StartPosition = FormStartPosition.CenterScreen;
                     this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
                 }
                 catch
@@ -99,31 +104,71 @@ namespace LeonUI.Forms
 
         private void LeonMessageBox_Paint(object sender, PaintEventArgs e)
         {
-            e.Graphics.DrawLines(borderPen,
-                new Point[]
-                {
-                    new Point(0,0),
-                    new Point(this.Width-1,0),
-                    new Point(this.Width-1,this.Height-1),
-                    new Point(0,this.Height-1),
-                    new Point(0,0)
-                }
-            );
+            e.Graphics.DrawRectangle(Pens.DeepSkyBlue, new Rectangle(0, 0, this.Width - 1, this.Height - 1));
         }
 
         private void CloseButton_Click(object sender, EventArgs e)
         {
-
+            new Thread(new ThreadStart(delegate
+            {
+                while (this.Opacity > 0)
+                {
+                    this.Top -= 1;
+                    this.Opacity -= 0.1;
+                    Thread.Sleep(15);
+                }
+                this.DialogResult = DialogResult.Cancel;
+            })).Start();
         }
 
         private void OKButton_Click(object sender, EventArgs e)
         {
-
+            new Thread(new ThreadStart(delegate
+            {
+                while (this.Opacity > 0)
+                {
+                    this.Top -= 1;
+                    this.Opacity -= 0.1;
+                    Thread.Sleep(15);
+                }
+                this.DialogResult = DialogResult.OK;
+            })).Start();
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
         {
+            new Thread(new ThreadStart(delegate
+            {
+                while (this.Opacity > 0)
+                {
+                    this.Top -= 1;
+                    this.Opacity -= 0.1;
+                    Thread.Sleep(15);
+                }
+                this.DialogResult = DialogResult.Cancel;
+            })).Start();
+        }
 
+        private void LeonMessageBox_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (this.DialogResult == DialogResult.None) this.DialogResult = DialogResult.Cancel;
+        }
+
+        private void LeonMessageBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            new Thread(new ThreadStart(delegate
+            {
+                while (this.Opacity > 0)
+                {
+                    this.Top -= 1;
+                    this.Opacity -= 0.1;
+                    Thread.Sleep(15);
+                }
+                if ((int)e.KeyChar == 13)
+                    this.DialogResult = DialogResult.OK;
+                else if ((int)e.KeyChar == 27)
+                    this.DialogResult = DialogResult.Cancel;
+            })).Start();
         }
     }
 }
