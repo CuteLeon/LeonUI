@@ -14,7 +14,7 @@ namespace LeonUI.Forms
     {
         private Pen borderPen = new Pen(Color.DeepSkyBlue);
         /// <summary>
-        /// 弹窗主题颜色
+       /// 弹窗主题颜色
         /// </summary>
         public Color ThemeColor
         {

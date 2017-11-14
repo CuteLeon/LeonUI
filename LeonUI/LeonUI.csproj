@@ -129,18 +129,6 @@
     <Folder Include="Interface\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Buttons\CloseButton.resx">
-      <DependentUpon>CloseButton.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Buttons\MinButton.resx">
-      <DependentUpon>MinButton.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Buttons\RestoreButton.resx">
-      <DependentUpon>RestoreButton.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Buttons\MaxButton.resx">
-      <DependentUpon>MaxButton.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\LeonMessageBox.resx">
       <DependentUpon>LeonMessageBox.cs</DependentUpon>
     </EmbeddedResource>
