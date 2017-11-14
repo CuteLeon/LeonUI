@@ -61,10 +61,10 @@
     <Compile Include="Buttons\ImageButton.Designer.cs">
       <DependentUpon>ImageButton.cs</DependentUpon>
     </Compile>
-    <Compile Include="Buttons\CloseButton.cs">
+    <Compile Include="TitleButtons\CloseButton.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Buttons\CloseButton.Designer.cs">
+    <Compile Include="TitleButtons\CloseButton.Designer.cs">
       <DependentUpon>CloseButton.cs</DependentUpon>
     </Compile>
     <Compile Include="Buttons\LargeButton.cs">
@@ -73,22 +73,22 @@
     <Compile Include="Buttons\LargeButton.Designer.cs">
       <DependentUpon>LargeButton.cs</DependentUpon>
     </Compile>
-    <Compile Include="Buttons\MinButton.cs">
+    <Compile Include="TitleButtons\MinButton.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Buttons\MinButton.Designer.cs">
+    <Compile Include="TitleButtons\MinButton.Designer.cs">
       <DependentUpon>MinButton.cs</DependentUpon>
     </Compile>
-    <Compile Include="Buttons\RestoreButton.cs">
+    <Compile Include="TitleButtons\RestoreButton.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Buttons\RestoreButton.Designer.cs">
+    <Compile Include="TitleButtons\RestoreButton.Designer.cs">
       <DependentUpon>RestoreButton.cs</DependentUpon>
     </Compile>
-    <Compile Include="Buttons\MaxButton.cs">
+    <Compile Include="TitleButtons\MaxButton.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Buttons\MaxButton.Designer.cs">
+    <Compile Include="TitleButtons\MaxButton.Designer.cs">
       <DependentUpon>MaxButton.cs</DependentUpon>
     </Compile>
     <Compile Include="Labels\ShadowLabel.cs" />

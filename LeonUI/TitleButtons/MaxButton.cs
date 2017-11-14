@@ -20,6 +20,9 @@ namespace LeonUI.TitleButtons
 
             BackgroundImageLayout = ImageLayout.Center;
             BackgroundImage = UnityResource.Max_0;
+            BackColor = Color.Transparent;
+            DoubleBuffered = true;
+            MinimumSize = UnityResource.Max_0.Size;
 
             this.MouseEnter += new EventHandler((s,e)=>BackgroundImage=UnityResource.Max_1);
             this.MouseDown += new MouseEventHandler((s, e) => BackgroundImage = UnityResource.Max_2);
@@ -28,5 +31,6 @@ namespace LeonUI.TitleButtons
 
             this.Click += new EventHandler((s,e)=>FindForm().WindowState= FormWindowState.Maximized);
         }
+
     }
 }

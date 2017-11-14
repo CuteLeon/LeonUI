@@ -16,6 +16,7 @@ namespace LeonUI.Controls
         public LargeButton()
         {
             InitializeComponent();
+            SetStyle(ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.ResizeRedraw | ControlStyles.SupportsTransparentBackColor, true);
 
             this.AutoEllipsis = true;
             this.BackColor = Color.Transparent;

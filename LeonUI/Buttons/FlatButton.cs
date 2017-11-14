@@ -49,6 +49,7 @@ namespace LeonUI.Controls
         public FlatButton()
         {
             InitializeComponent();
+            SetStyle(ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.ResizeRedraw | ControlStyles.SupportsTransparentBackColor, true);
 
             base.AutoSize = false;
             this.AutoEllipsis = true;

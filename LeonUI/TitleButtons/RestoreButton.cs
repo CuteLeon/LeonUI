@@ -20,6 +20,9 @@ namespace LeonUI.TitleButtons
 
             BackgroundImageLayout = ImageLayout.Center;
             BackgroundImage = UnityResource.Restore_0;
+            BackColor = Color.Transparent;
+            DoubleBuffered = true;
+            MinimumSize = UnityResource.Restore_0.Size;
 
             this.MouseEnter += new EventHandler((s,e)=>BackgroundImage=UnityResource.Restore_1);
             this.MouseDown += new MouseEventHandler((s, e) => BackgroundImage = UnityResource.Restore_2);
