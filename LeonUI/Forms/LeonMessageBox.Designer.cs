@@ -129,6 +129,7 @@
             this.CancelButton.TabIndex = 4;
             this.CancelButton.Text = "取消";
             this.CancelButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.CancelButton.Visible = false;
             this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // TopPanel

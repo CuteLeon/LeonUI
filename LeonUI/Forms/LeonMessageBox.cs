@@ -64,6 +64,13 @@ namespace LeonUI.Forms
             TitleLabel.Text = Title;
             MessageLabel.Text = Message;
             IconLabel.Image = UnityResource.ResourceManager.GetObject(IconType.ToString()) as Image;
+
+            if (IconType == IconType.Question)
+            {
+                CancelButton.Show();
+                CancelButton.Left = 80;
+                OKButton.Left = 196;
+            }
         }
 
         private void LeonMessageBox_Load(object sender, EventArgs e)
