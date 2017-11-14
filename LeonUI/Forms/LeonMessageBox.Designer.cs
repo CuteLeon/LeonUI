@@ -62,9 +62,9 @@
             this.MessageLabel.BackColor = System.Drawing.Color.Transparent;
             this.MessageLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MessageLabel.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.MessageLabel.Location = new System.Drawing.Point(66, 6);
+            this.MessageLabel.Location = new System.Drawing.Point(76, 6);
             this.MessageLabel.Name = "MessageLabel";
-            this.MessageLabel.Size = new System.Drawing.Size(288, 88);
+            this.MessageLabel.Size = new System.Drawing.Size(278, 88);
             this.MessageLabel.TabIndex = 1;
             this.MessageLabel.Text = "LeonMessageBox";
             this.MessageLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -77,7 +77,7 @@
             this.IconLabel.Location = new System.Drawing.Point(6, 6);
             this.IconLabel.Margin = new System.Windows.Forms.Padding(0);
             this.IconLabel.Name = "IconLabel";
-            this.IconLabel.Size = new System.Drawing.Size(60, 88);
+            this.IconLabel.Size = new System.Drawing.Size(70, 88);
             this.IconLabel.TabIndex = 0;
             this.IconLabel.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
