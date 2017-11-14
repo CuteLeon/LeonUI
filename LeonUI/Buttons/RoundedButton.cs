@@ -11,11 +11,11 @@ using System.Windows.Forms;
 namespace LeonUI.Controls
 {
     [DefaultEvent("Click")]
-    public partial class RoundedButton : Label
+    public partial class RoundedButton : ImageButton
     {
-        private Bitmap normalBitmap = UnityResource.DefaultButton_0;
-        private Bitmap enterBitmap = UnityResource.DefaultButton_1;
-        private Bitmap downBitmap = UnityResource.DefaultButton_2;
+        protected new Bitmap normalBitmap = UnityResource.DefaultButton_0;
+        protected new Bitmap enterBitmap = UnityResource.DefaultButton_1;
+        protected new Bitmap downBitmap = UnityResource.DefaultButton_2;
         private Rectangle centerRectangle = new Rectangle(17,16,70,2);
         private Bitmap renderedNormalBitmap = UnityResource.DefaultButton_0;
         private Bitmap renderedEnterBitmap = UnityResource.DefaultButton_1;
@@ -40,7 +40,7 @@ namespace LeonUI.Controls
         /// <summary>
         /// 按钮默认图片
         /// </summary>
-        public Bitmap NormalBitmap
+        public new Bitmap NormalBitmap
         {
             get => normalBitmap;
             set {
@@ -55,7 +55,7 @@ namespace LeonUI.Controls
         /// <summary>
         /// 按钮鼠标进入图片
         /// </summary>
-        public Bitmap EnterBitmap
+        public new Bitmap EnterBitmap
         {
             get => enterBitmap;
             set
@@ -70,7 +70,7 @@ namespace LeonUI.Controls
         /// <summary>
         /// 按钮鼠标按下图片
         /// </summary>
-        public Bitmap DownBitmap
+        public new Bitmap DownBitmap
         {
             get => downBitmap;
             set
@@ -85,27 +85,25 @@ namespace LeonUI.Controls
         public RoundedButton()
         {
             InitializeComponent();
-            SetStyle(ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.ResizeRedraw | ControlStyles.SupportsTransparentBackColor, true);
-
-            this.AutoEllipsis = true;
-            this.BackColor = Color.Transparent;
-            this.DoubleBuffered = true;
-            this.ImageAlign = ContentAlignment.MiddleCenter;
-            this.TextAlign = ContentAlignment.MiddleCenter;
-            this.ForeColor = Color.White;
+            
             this.Image = renderedNormalBitmap;
 
-            Resize += new EventHandler((s,e)=> {
+            BindingEvents();
+        }
+
+        protected new void BindingEvents()
+        {
+            Resize += new EventHandler((s, e) => {
                 renderedNormalBitmap = BitmapProcessor.RenderBGI(normalBitmap, this.Size, centerRectangle);
                 renderedEnterBitmap = BitmapProcessor.RenderBGI(enterBitmap, this.Size, centerRectangle);
                 renderedDownBitmap = BitmapProcessor.RenderBGI(downBitmap, this.Size, centerRectangle);
                 this.Image = renderedNormalBitmap;
                 Invalidate();
             });
-            MouseEnter += new EventHandler((s,e)=> { Image = renderedEnterBitmap; Invalidate();});
-            MouseDown += new MouseEventHandler((s,e)=> { Image = renderedDownBitmap; Invalidate();});
-            MouseUp += new MouseEventHandler((s,e)=> { Image = renderedEnterBitmap; Invalidate();});
-            MouseLeave += new EventHandler((s,e)=> { Image = renderedNormalBitmap; Invalidate();});
+            MouseEnter += new EventHandler((s, e) => { Image = renderedEnterBitmap; Invalidate(); });
+            MouseDown += new MouseEventHandler((s, e) => { Image = renderedDownBitmap; Invalidate(); });
+            MouseUp += new MouseEventHandler((s, e) => { Image = renderedEnterBitmap; Invalidate(); });
+            MouseLeave += new EventHandler((s, e) => { Image = renderedNormalBitmap; Invalidate(); });
         }
 
         protected override void InitLayout()

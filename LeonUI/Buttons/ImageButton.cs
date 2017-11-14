@@ -13,7 +13,7 @@ namespace LeonUI.Controls
     [DefaultEvent("Click")]
     public partial class ImageButton : Label
     {
-        private Bitmap normalBitmap = null;
+        protected Bitmap normalBitmap = null;
         /// <summary>
         /// 按钮默认图片
         /// </summary>
@@ -27,7 +27,7 @@ namespace LeonUI.Controls
             }
         }
 
-        private Bitmap enterBitmap = null;
+        protected Bitmap enterBitmap = null;
         /// <summary>
         /// 按钮鼠标进入图片
         /// </summary>
@@ -41,7 +41,7 @@ namespace LeonUI.Controls
             }
         }
 
-        private Bitmap downBitmap = null;
+        protected Bitmap downBitmap = null;
         /// <summary>
         /// 按钮鼠标按下图片
         /// </summary>
@@ -67,10 +67,15 @@ namespace LeonUI.Controls
             this.TextAlign = ContentAlignment.MiddleCenter;
             this.ForeColor = Color.White;
 
-            MouseEnter += new EventHandler((s,e)=> { Image = EnterBitmap; Invalidate();});
-            MouseDown += new MouseEventHandler((s,e)=> { Image = DownBitmap; Invalidate();});
-            MouseUp += new MouseEventHandler((s,e)=> { Image = EnterBitmap; Invalidate();});
-            MouseLeave += new EventHandler((s,e)=> { Image = NormalBitmap; Invalidate();});
+            BindingEvents();
+        }
+
+        protected void BindingEvents()
+        {
+            MouseEnter += new EventHandler((s, e) => { Image = EnterBitmap; Invalidate(); });
+            MouseDown += new MouseEventHandler((s, e) => { Image = DownBitmap; Invalidate(); });
+            MouseUp += new MouseEventHandler((s, e) => { Image = EnterBitmap; Invalidate(); });
+            MouseLeave += new EventHandler((s, e) => { Image = NormalBitmap; Invalidate(); });
         }
 
         protected override void InitLayout()
