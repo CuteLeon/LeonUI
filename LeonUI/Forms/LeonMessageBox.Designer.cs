@@ -33,18 +33,19 @@
             this.MessageLabel = new System.Windows.Forms.Label();
             this.IconLabel = new System.Windows.Forms.Label();
             this.BottomPanel = new LeonUI.Panels.Panel();
+            this.OKButton = new LeonUI.Controls.RoundedButton();
+            this.CancelButton = new LeonUI.Controls.RoundedButton();
             this.TopPanel = new LeonUI.Panels.Panel();
             this.CloseButton = new LeonUI.TitleButtons.CloseButton();
             this.TitleLabel = new System.Windows.Forms.Label();
-            this.roundedButton1 = new LeonUI.Controls.RoundedButton();
             this.MiddlePanel.SuspendLayout();
+            this.BottomPanel.SuspendLayout();
             this.TopPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // MiddlePanel
             // 
             this.MiddlePanel.BackColor = System.Drawing.Color.White;
-            this.MiddlePanel.Controls.Add(this.roundedButton1);
             this.MiddlePanel.Controls.Add(this.MessageLabel);
             this.MiddlePanel.Controls.Add(this.IconLabel);
             this.MiddlePanel.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -80,17 +81,56 @@
             this.IconLabel.Size = new System.Drawing.Size(60, 88);
             this.IconLabel.TabIndex = 0;
             this.IconLabel.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.IconLabel.Visible = false;
             // 
             // BottomPanel
             // 
             this.BottomPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
+            this.BottomPanel.Controls.Add(this.OKButton);
+            this.BottomPanel.Controls.Add(this.CancelButton);
             this.BottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.BottomPanel.Location = new System.Drawing.Point(1, 131);
             this.BottomPanel.Margin = new System.Windows.Forms.Padding(0);
             this.BottomPanel.Name = "BottomPanel";
             this.BottomPanel.Size = new System.Drawing.Size(360, 40);
             this.BottomPanel.TabIndex = 1;
+            // 
+            // OKButton
+            // 
+            this.OKButton.AutoEllipsis = true;
+            this.OKButton.BackColor = System.Drawing.Color.Transparent;
+            this.OKButton.CenterRectangle = new System.Drawing.Rectangle(17, 16, 70, 2);
+            this.OKButton.DownBitmap = ((System.Drawing.Bitmap)(resources.GetObject("OKButton.DownBitmap")));
+            this.OKButton.EnterBitmap = ((System.Drawing.Bitmap)(resources.GetObject("OKButton.EnterBitmap")));
+            this.OKButton.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.OKButton.ForeColor = System.Drawing.Color.DeepSkyBlue;
+            this.OKButton.Image = ((System.Drawing.Image)(resources.GetObject("OKButton.Image")));
+            this.OKButton.Location = new System.Drawing.Point(130, 3);
+            this.OKButton.Name = "OKButton";
+            this.OKButton.NormalBitmap = ((System.Drawing.Bitmap)(resources.GetObject("OKButton.NormalBitmap")));
+            this.OKButton.Size = new System.Drawing.Size(103, 34);
+            this.OKButton.TabIndex = 3;
+            this.OKButton.Text = "确定";
+            this.OKButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.OKButton.Click += new System.EventHandler(this.OKButton_Click);
+            // 
+            // CancelButton
+            // 
+            this.CancelButton.AutoEllipsis = true;
+            this.CancelButton.BackColor = System.Drawing.Color.Transparent;
+            this.CancelButton.CenterRectangle = new System.Drawing.Rectangle(17, 16, 70, 2);
+            this.CancelButton.DownBitmap = ((System.Drawing.Bitmap)(resources.GetObject("CancelButton.DownBitmap")));
+            this.CancelButton.EnterBitmap = ((System.Drawing.Bitmap)(resources.GetObject("CancelButton.EnterBitmap")));
+            this.CancelButton.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.CancelButton.ForeColor = System.Drawing.Color.DeepSkyBlue;
+            this.CancelButton.Image = ((System.Drawing.Image)(resources.GetObject("CancelButton.Image")));
+            this.CancelButton.Location = new System.Drawing.Point(130, 3);
+            this.CancelButton.Name = "CancelButton";
+            this.CancelButton.NormalBitmap = ((System.Drawing.Bitmap)(resources.GetObject("CancelButton.NormalBitmap")));
+            this.CancelButton.Size = new System.Drawing.Size(103, 34);
+            this.CancelButton.TabIndex = 4;
+            this.CancelButton.Text = "取消";
+            this.CancelButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // TopPanel
             // 
@@ -115,6 +155,7 @@
             this.CloseButton.Name = "CloseButton";
             this.CloseButton.Size = new System.Drawing.Size(30, 30);
             this.CloseButton.TabIndex = 4;
+            this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
             // 
             // TitleLabel
             // 
@@ -131,24 +172,6 @@
             this.TitleLabel.Text = "LeonMessageBox";
             this.TitleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // roundedButton1
-            // 
-            this.roundedButton1.AutoEllipsis = true;
-            this.roundedButton1.BackColor = System.Drawing.Color.Transparent;
-            this.roundedButton1.CenterRectangle = new System.Drawing.Rectangle(17, 16, 70, 2);
-            this.roundedButton1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.roundedButton1.DownBitmap = ((System.Drawing.Bitmap)(resources.GetObject("roundedButton1.DownBitmap")));
-            this.roundedButton1.EnterBitmap = ((System.Drawing.Bitmap)(resources.GetObject("roundedButton1.EnterBitmap")));
-            this.roundedButton1.ForeColor = System.Drawing.Color.White;
-            this.roundedButton1.Image = ((System.Drawing.Image)(resources.GetObject("roundedButton1.Image")));
-            this.roundedButton1.Location = new System.Drawing.Point(66, 6);
-            this.roundedButton1.Name = "roundedButton1";
-            this.roundedButton1.NormalBitmap = ((System.Drawing.Bitmap)(resources.GetObject("roundedButton1.NormalBitmap")));
-            this.roundedButton1.Size = new System.Drawing.Size(288, 88);
-            this.roundedButton1.TabIndex = 2;
-            this.roundedButton1.Text = "roundedButton1";
-            this.roundedButton1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // LeonMessageBox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -161,6 +184,7 @@
             this.Controls.Add(this.BottomPanel);
             this.Controls.Add(this.TopPanel);
             this.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "LeonMessageBox";
             this.Padding = new System.Windows.Forms.Padding(1);
@@ -170,6 +194,7 @@
             this.Shown += new System.EventHandler(this.LeonMessageBox_Shown);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.LeonMessageBox_Paint);
             this.MiddlePanel.ResumeLayout(false);
+            this.BottomPanel.ResumeLayout(false);
             this.TopPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -183,6 +208,7 @@
         private System.Windows.Forms.Label MessageLabel;
         private System.Windows.Forms.Label TitleLabel;
         private TitleButtons.CloseButton CloseButton;
-        private Controls.RoundedButton roundedButton1;
+        private Controls.RoundedButton OKButton;
+        private Controls.RoundedButton CancelButton;
     }
 }

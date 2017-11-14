@@ -58,6 +58,7 @@ namespace LeonUI.Forms
         {
             InitializeComponent();
 
+            Text = Title;
             TitleLabel.Text = Title;
             MessageLabel.Text = Message;
             IconLabel.Image = UnityResource.ResourceManager.GetObject(IconType.ToString()) as Image;
@@ -110,5 +111,19 @@ namespace LeonUI.Forms
             );
         }
 
+        private void CloseButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void OKButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CancelButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

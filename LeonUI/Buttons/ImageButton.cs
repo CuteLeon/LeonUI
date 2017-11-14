@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 namespace LeonUI.Controls
 {
+    [DefaultEvent("Click")]
     public partial class ImageButton : Label
     {
         private Bitmap normalBitmap = null;
