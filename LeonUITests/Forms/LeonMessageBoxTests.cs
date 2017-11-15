@@ -30,12 +30,13 @@ namespace LeonUI.Forms.Tests
             };
             HostForm.Shown += new EventHandler((s, e) =>
             {
+                HostForm.Activate();
                 new Thread(new ThreadStart(() =>
                 {
-                    Thread.Sleep(3000);
-                    LeonMessageBox leonMessageBox = new LeonMessageBox("123", "456", LeonMessageBox.IconType.Question);
-                    Debug.Print(leonMessageBox.ShowDialog(HostForm).ToString());
+                    Thread.Sleep(1000);
                     HostForm.Invoke(new Action(()=> {
+                        LeonMessageBox leonMessageBox = new LeonMessageBox("123", "456", LeonMessageBox.IconType.Info);
+                        Debug.Print(leonMessageBox.ShowDialog(HostForm).ToString());
                     }));
                 })).Start();
             });

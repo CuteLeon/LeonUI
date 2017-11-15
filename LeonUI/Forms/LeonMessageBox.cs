@@ -13,6 +13,8 @@ namespace LeonUI.Forms
 {
     public partial class LeonMessageBox : Form
     {
+        //TIPS: Form.KeyPreview=True 即可让窗体捕捉所有键盘事件，而不是控件
+
         private Pen borderPen = new Pen(Color.DeepSkyBlue);
         /// <summary>
        /// 弹窗主题颜色
@@ -81,7 +83,6 @@ namespace LeonUI.Forms
             this.BackgroundImageLayout = ImageLayout.Stretch;
 
             TitleLabel.MouseDown += new MouseEventHandler( UnityModule.MoveFormViaMouse);
-            CloseButton.KeyPress += new KeyPressEventHandler(LeonMessageBox_KeyPress);
         }
 
         private void LeonMessageBox_Shown(object sender, EventArgs e)
@@ -162,19 +163,23 @@ namespace LeonUI.Forms
 
         private void LeonMessageBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            new Thread(new ThreadStart(delegate
+            if (e.KeyChar == 13 || e.KeyChar == 27)
             {
-                while (this.Opacity > 0)
+                new Thread(new ThreadStart(delegate
                 {
-                    this.Top -= 1;
-                    this.Opacity -= 0.1;
-                    Thread.Sleep(15);
-                }
-                if ((int)e.KeyChar == 13)
-                    this.DialogResult = DialogResult.OK;
-                else if ((int)e.KeyChar == 27)
-                    this.DialogResult = DialogResult.Cancel;
-            })).Start();
+                    while (this.Opacity > 0)
+                    {
+                        this.Top -= 1;
+                        this.Opacity -= 0.1;
+                        Thread.Sleep(15);
+                    }
+                    if ((int)e.KeyChar == 13)
+                        this.DialogResult = DialogResult.OK;
+                    else if ((int)e.KeyChar == 27)
+                        this.DialogResult = DialogResult.Cancel;
+                })).Start();
+            }
         }
+
     }
 }

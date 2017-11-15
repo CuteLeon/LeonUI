@@ -67,6 +67,13 @@
     <Compile Include="Controls\Buttons\RoundedButton.Designer.cs">
       <DependentUpon>RoundedButton.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\hr.cs" />
+    <Compile Include="Controls\MyComBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\MyComBox.Designer.cs">
+      <DependentUpon>MyComBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\TitleButtons\CloseButton.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -135,6 +142,9 @@
     <Folder Include="Interface\" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Controls\MyComBox.resx">
+      <DependentUpon>MyComBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\LeonMessageBox.resx">
       <DependentUpon>LeonMessageBox.cs</DependentUpon>
     </EmbeddedResource>
@@ -218,6 +228,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\LargeButton_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MyComBox.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MyTextBox.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
