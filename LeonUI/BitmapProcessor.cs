@@ -38,8 +38,6 @@ namespace LeonUI
 
                     if ((TargetSize.Width >= LTCellSize.Width + RBCellSize.Width) && (TargetSize.Height >= LTCellSize.Height + RBCellSize.Height))//4
                     {
-                        //TODO:已经确定此处有BUG:左右边框宽度不一致时，右上角出现缺失；
-
                         TargetBGI = new Bitmap(TargetSize.Width, TargetSize.Height);
                         //九宫格切分
                         using (Graphics TargetGraphics = Graphics.FromImage(TargetBGI))
