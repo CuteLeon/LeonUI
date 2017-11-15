@@ -59,6 +59,7 @@ namespace LeonUI.Forms
         {
             InitializeComponent();
             CheckForIllegalCrossThreadCalls = false;
+            this.StartPosition = (Owner == null ? FormStartPosition.CenterScreen : FormStartPosition.CenterParent);
 
             Text = Title;
             TitleLabel.Text = Title;
@@ -89,7 +90,6 @@ namespace LeonUI.Forms
             {
                 try
                 {
-                    this.StartPosition = FormStartPosition.CenterParent;
                     this.Icon = this.Owner.Icon;
                     this.Font = this.Owner.Font;
                     this.BackgroundImage = Owner.BackgroundImage;
@@ -101,7 +101,6 @@ namespace LeonUI.Forms
             {
                 try
                 {
-                    this.StartPosition = FormStartPosition.CenterScreen;
                     this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
                 }
                 catch
