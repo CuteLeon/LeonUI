@@ -84,14 +84,16 @@ namespace LeonUI.Controls
                             InnerLabel.Hide();
                             InnerTextBox.Width = this.Width - 42;
                             InnerTextBox.Show();
+                            CenterRectangle.Width = 60;
                             StaticBGImage = UnityResource.ComboBoxBGI;
                             break;
                         }
                     case ComboBoxStyle.DropDownList:
                         {
+                            InnerTextBox.Hide();
                             InnerLabel.Width = this.Width - 42;
                             InnerLabel.Show();
-                            InnerTextBox.Hide();
+                            CenterRectangle.Width = 60;
                             StaticBGImage = UnityResource.ComboBoxBGI;
                             break;
                         }
@@ -100,6 +102,7 @@ namespace LeonUI.Controls
                             InnerLabel.Hide();
                             InnerTextBox.Width = this.Width - 34;
                             InnerTextBox.Show();
+                            CenterRectangle.Width = 70;
                             StaticBGImage = UnityResource.DefaultButton_0;
                             break;
                         }
@@ -164,11 +167,11 @@ namespace LeonUI.Controls
             {
                 InnerLabel.Font = value;
                 InnerTextBox.Font=value;
+                InnerLabel.Size = InnerTextBox.Size;
+
                 this.Width = InnerTextBox.Width + 16 + (dropDownStyle == ComboBoxStyle.DropDown ? 26 : 17);
                 this.MinimumSize = new Size(45, InnerTextBox.Height + 12);
                 this.MaximumSize = new Size(0,this.Height);
-
-
             }
         }
 

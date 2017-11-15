@@ -38,6 +38,8 @@ namespace LeonUI
 
                     if ((TargetSize.Width >= LTCellSize.Width + RBCellSize.Width) && (TargetSize.Height >= LTCellSize.Height + RBCellSize.Height))//4
                     {
+                        //TODO:已经确定此处有BUG:左右边框宽度不一致时，右上角出现缺失；
+
                         TargetBGI = new Bitmap(TargetSize.Width, TargetSize.Height);
                         //九宫格切分
                         using (Graphics TargetGraphics = Graphics.FromImage(TargetBGI))
@@ -49,7 +51,8 @@ namespace LeonUI
                             //绘制左上角
                             TargetGraphics.DrawImageUnscaledAndClipped(ResourceImage.Clone(new Rectangle(Point.Empty, LTCellSize), PixelFormat.Format32bppArgb), new Rectangle(Point.Empty, LTCellSize));
                             //绘制右上角
-                            TargetGraphics.DrawImageUnscaledAndClipped(ResourceImage.Clone(new Rectangle(CenterRectangle.Right, 0, RBCellSize.Width, LTCellSize.Height), PixelFormat.Format32bppArgb), new Rectangle(TargetSize.Width - RBCellSize.Width, 0, LTCellSize.Width, LTCellSize.Height));
+                            TargetGraphics.DrawImageUnscaledAndClipped(ResourceImage.Clone(new Rectangle(CenterRectangle.Right, 0, RBCellSize.Width, LTCellSize.Height), PixelFormat.Format32bppArgb), new Rectangle(TargetSize.Width - RBCellSize.Width, 0, RBCellSize.Width, LTCellSize.Height));
+                            
                             //绘制左下角
                             TargetGraphics.DrawImageUnscaledAndClipped(ResourceImage.Clone(new Rectangle(0, CenterRectangle.Bottom, LTCellSize.Width, RBCellSize.Height), PixelFormat.Format32bppArgb), new Rectangle(0, TargetSize.Height - RBCellSize.Height, LTCellSize.Width, RBCellSize.Height));
                             //绘制右下角
