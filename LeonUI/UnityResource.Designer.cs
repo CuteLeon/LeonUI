@@ -123,6 +123,16 @@ namespace LeonUI {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap ComboBoxBGI {
+            get {
+                object obj = ResourceManager.GetObject("ComboBoxBGI", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap DefaultButton_0 {
             get {
                 object obj = ResourceManager.GetObject("DefaultButton_0", resourceCulture);
@@ -263,26 +273,6 @@ namespace LeonUI {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap MyComBox {
-            get {
-                object obj = ResourceManager.GetObject("MyComBox", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap MyTextBox {
-            get {
-                object obj = ResourceManager.GetObject("MyTextBox", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
         internal static System.Drawing.Bitmap Question {
             get {
                 object obj = ResourceManager.GetObject("Question", resourceCulture);
@@ -316,6 +306,16 @@ namespace LeonUI {
         internal static System.Drawing.Bitmap Restore_2 {
             get {
                 object obj = ResourceManager.GetObject("Restore_2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap TextBoxBGI {
+            get {
+                object obj = ResourceManager.GetObject("TextBoxBGI", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

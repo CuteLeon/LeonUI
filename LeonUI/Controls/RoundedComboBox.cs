@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 
 namespace LeonUI.Controls
 {
-    public partial class ComboBox : UserControl
+    public partial class RoundedComboBox : UserControl
     {
 
         public int SelectedIndex
@@ -67,7 +67,7 @@ namespace LeonUI.Controls
 
         ComboBoxStyle dropDownStyle = ComboBoxStyle.DropDown;
         /// <summary>
-        /// 设置 MyComBox 显示效果类型
+        /// 设置 ComboBox 显示效果类型
         /// </summary>
         public ComboBoxStyle DropDownStyle {
             get => dropDownStyle;
@@ -75,7 +75,7 @@ namespace LeonUI.Controls
             {
                 dropDownStyle = value;
                 this.BackgroundImage = null;
-                BGImage = CreateBGImage();
+                CreateBGImage(ref BGImage);
                 this.BackgroundImage = BGImage;
 
                 switch (value)
@@ -112,9 +112,9 @@ namespace LeonUI.Controls
         }
 
         /// <summary>
-        /// MyComBox 背景图资源
+        /// ComboBox 背景图资源
         /// </summary>
-        static Bitmap StaticBGImage = UnityResource.MyComBox;
+        static Bitmap StaticBGImage = UnityResource.ComboBoxBGI;
 
         /// <summary>
         /// 左边切图
@@ -154,7 +154,7 @@ namespace LeonUI.Controls
             }
         }
 
-        public ComboBox()
+        public RoundedComboBox()
         {
             CheckForIllegalCrossThreadCalls = false;
             InitializeComponent();
@@ -164,7 +164,7 @@ namespace LeonUI.Controls
             this.MinimumSize = new Size(0,32);
             this.MaximumSize = MinimumSize;
 
-            InnerLabel.Click += new EventHandler(MyComBox_Click);
+            InnerLabel.Click += new EventHandler(ComboBox_Click);
         }
 
         static Bitmap RotateFlipBitmap(Bitmap iniBitmap)
@@ -174,14 +174,20 @@ namespace LeonUI.Controls
             return RotatedBitmap;
         }
 
-        private Bitmap CreateBGImage()
+        private void CreateBGImage(ref Bitmap BGImage)
         {
-            if (this.Width == 0 || this.Height == 0) return null;
+            BGImage?.Dispose();
 
-            Bitmap bgimage = new Bitmap(this.Size.Width, 32);
+            if (this.Width == 0 || this.Height == 0)
+            {
+                BGImage = null;
+                return;
+            }
+
             try
             {
-                using (Graphics graphics = Graphics.FromImage(bgimage))
+                BGImage = new Bitmap(this.Size.Width, 32);
+                using (Graphics graphics = Graphics.FromImage(BGImage))
                 {
                     graphics.DrawImage(LeftBitmap, 0, 0, 16, 32);
 
@@ -200,13 +206,12 @@ namespace LeonUI.Controls
                 }
             }
             catch { }
-            return bgimage;
         }
 
-        private void MyComBox_Resize(object sender, EventArgs e)
+        private void ComboBox_Resize(object sender, EventArgs e)
         {
             this.BackgroundImage = null;
-            BGImage = CreateBGImage();
+            CreateBGImage(ref BGImage);
             this.BackgroundImage = BGImage;
 
             if (dropDownStyle == ComboBoxStyle.DropDownList)
@@ -277,7 +282,7 @@ namespace LeonUI.Controls
             return retval;
         }
 
-        private void MyComBox_Click(object sender, EventArgs e)
+        private void ComboBox_Click(object sender, EventArgs e)
         {
             if(dropDownStyle!= ComboBoxStyle.Simple)
                 DropDownList();

@@ -211,6 +211,6 @@
         private System.Windows.Forms.Label TitleLabel;
         private TitleButtons.CloseButton CloseButton;
         private Controls.RoundedButton OKButton;
-        private Controls.RoundedButton CancelButton;
+        private new Controls.RoundedButton CancelButton;
     }
 }

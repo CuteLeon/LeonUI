@@ -68,11 +68,17 @@
       <DependentUpon>RoundedButton.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\hr.cs" />
-    <Compile Include="Controls\ComboBox.cs">
+    <Compile Include="Controls\SmipleTextBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\ComboBox.Designer.cs">
-      <DependentUpon>ComboBox.cs</DependentUpon>
+    <Compile Include="Controls\SmipleTextBox.Designer.cs">
+      <DependentUpon>SmipleTextBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\RoundedComboBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\RoundedComboBox.Designer.cs">
+      <DependentUpon>RoundedComboBox.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\TitleButtons\CloseButton.cs">
       <SubType>UserControl</SubType>
@@ -148,8 +154,11 @@
     <Folder Include="Interface\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Controls\ComboBox.resx">
-      <DependentUpon>ComboBox.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\SmipleTextBox.resx">
+      <DependentUpon>SmipleTextBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\RoundedComboBox.resx">
+      <DependentUpon>RoundedComboBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\LeonMessageBox.resx">
       <DependentUpon>LeonMessageBox.cs</DependentUpon>
@@ -240,6 +249,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\MyTextBox.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ComboBoxBGI.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TextBoxBGI.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
