@@ -53,8 +53,8 @@ namespace LeonUI.Controls
 
             this.OnResize(null);
 
-            this.MinimumSize = new Size(0,32);
-            this.MaximumSize = MinimumSize;
+            this.MinimumSize = new Size(32,32);
+            this.MaximumSize = new Size(0,32);
         }
 
         private void CreateBGImage(ref Bitmap BGImage)
@@ -82,6 +82,8 @@ namespace LeonUI.Controls
 
         private void SmipleTextBox_Resize(object sender, EventArgs e)
         {
+            if (this.Size.Equals(BGImage?.Size)) return;
+
             this.BackgroundImage = null;
             CreateBGImage(ref BGImage);
             this.BackgroundImage = BGImage;

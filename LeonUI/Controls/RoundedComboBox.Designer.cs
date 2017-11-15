@@ -41,7 +41,7 @@
             this.InnerLabel.AutoEllipsis = true;
             this.InnerLabel.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.InnerLabel.ForeColor = System.Drawing.Color.Tomato;
-            this.InnerLabel.Location = new System.Drawing.Point(3, 3);
+            this.InnerLabel.Location = new System.Drawing.Point(16, 7);
             this.InnerLabel.Margin = new System.Windows.Forms.Padding(0);
             this.InnerLabel.Name = "InnerLabel";
             this.InnerLabel.Size = new System.Drawing.Size(38, 18);
@@ -54,13 +54,13 @@
             this.InnerTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.InnerTextBox.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.InnerTextBox.ForeColor = System.Drawing.Color.Tomato;
-            this.InnerTextBox.Location = new System.Drawing.Point(24, 3);
+            this.InnerTextBox.Location = new System.Drawing.Point(16, 7);
             this.InnerTextBox.Margin = new System.Windows.Forms.Padding(0);
             this.InnerTextBox.Name = "InnerTextBox";
             this.InnerTextBox.Size = new System.Drawing.Size(53, 19);
             this.InnerTextBox.TabIndex = 1;
             // 
-            // ComboBox
+            // RoundedComboBox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
@@ -72,7 +72,7 @@
             this.DoubleBuffered = true;
             this.Margin = new System.Windows.Forms.Padding(0);
             this.MinimumSize = new System.Drawing.Size(45, 32);
-            this.Name = "ComboBox";
+            this.Name = "RoundedComboBox";
             this.Size = new System.Drawing.Size(102, 32);
             this.Click += new System.EventHandler(this.ComboBox_Click);
             this.Resize += new System.EventHandler(this.ComboBox_Resize);

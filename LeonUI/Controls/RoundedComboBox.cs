@@ -16,6 +16,8 @@ namespace LeonUI.Controls
     public partial class RoundedComboBox : UserControl
     {
 
+        private Rectangle CenterRectangle = new Rectangle(17,16,60,1);
+
         public int SelectedIndex
         {
             get => ItemsListBox.SelectedIndex;
@@ -74,40 +76,38 @@ namespace LeonUI.Controls
             set
             {
                 dropDownStyle = value;
-                this.BackgroundImage = null;
-                CreateBGImage(ref BGImage);
-                this.BackgroundImage = BGImage;
 
                 switch (value)
                 {
                     case ComboBoxStyle.DropDown:
                         {
                             InnerLabel.Hide();
-                            InnerTextBox.Left = 16;
-                            InnerTextBox.Width = this.Width - 16 - 26;
-                            InnerTextBox.Top = (this.Height - InnerTextBox.Height) / 2 + 1;
+                            InnerTextBox.Width = this.Width - 42;
                             InnerTextBox.Show();
+                            StaticBGImage = UnityResource.ComboBoxBGI;
                             break;
                         }
                     case ComboBoxStyle.DropDownList:
                         {
-                            InnerLabel.Left = 16;
-                            InnerLabel.Width = this.Width - 16 - 26;
-                            InnerLabel.Top = (this.Height - InnerLabel.Height) / 2 + 1;
+                            InnerLabel.Width = this.Width - 42;
                             InnerLabel.Show();
                             InnerTextBox.Hide();
+                            StaticBGImage = UnityResource.ComboBoxBGI;
                             break;
                         }
                     case ComboBoxStyle.Simple:
                         {
                             InnerLabel.Hide();
-                            InnerTextBox.Left = 16;
-                            InnerTextBox.Width = this.Width - 16 - 17;
-                            InnerTextBox.Top = (this.Height - InnerTextBox.Height) / 2 + 1;
+                            InnerTextBox.Width = this.Width - 34;
                             InnerTextBox.Show();
+                            StaticBGImage = UnityResource.DefaultButton_0;
                             break;
                         }
                 }
+
+                this.BackgroundImage = null;
+                BitmapProcessor.RenderBGI(StaticBGImage, this.Size, CenterRectangle, ref BGImage);
+                this.BackgroundImage = BGImage;
             }
         }
 
@@ -154,6 +154,37 @@ namespace LeonUI.Controls
             }
         }
 
+        /// <summary>
+        /// 设置ComboBox控件字体
+        /// </summary>
+        public new Font Font
+        {
+            get => InnerTextBox.Font;
+            set
+            {
+                InnerLabel.Font = value;
+                InnerTextBox.Font=value;
+                this.Width = InnerTextBox.Width + 16 + (dropDownStyle == ComboBoxStyle.DropDown ? 26 : 17);
+                this.MinimumSize = new Size(45, InnerTextBox.Height + 12);
+                this.MaximumSize = new Size(0,this.Height);
+
+
+            }
+        }
+
+        /// <summary>
+        /// 设置ComboBox控件字体颜色
+        /// </summary>
+        public new Color ForeColor
+        {
+            get => InnerTextBox.ForeColor;
+            set
+            {
+                InnerLabel.ForeColor = value;
+                InnerTextBox.ForeColor=value;
+            }
+        }
+
         public RoundedComboBox()
         {
             CheckForIllegalCrossThreadCalls = false;
@@ -161,8 +192,8 @@ namespace LeonUI.Controls
             this.OnResize(null);
             CreateDropDownHost();
 
-            this.MinimumSize = new Size(0,32);
-            this.MaximumSize = MinimumSize;
+            this.MinimumSize = new Size(45, this.Height);
+            this.MaximumSize = new Size(0, this.Height);
 
             InnerLabel.Click += new EventHandler(ComboBox_Click);
         }
@@ -174,58 +205,9 @@ namespace LeonUI.Controls
             return RotatedBitmap;
         }
 
-        private void CreateBGImage(ref Bitmap BGImage)
-        {
-            BGImage?.Dispose();
-
-            if (this.Width == 0 || this.Height == 0)
-            {
-                BGImage = null;
-                return;
-            }
-
-            try
-            {
-                BGImage = new Bitmap(this.Size.Width, 32);
-                using (Graphics graphics = Graphics.FromImage(BGImage))
-                {
-                    graphics.DrawImage(LeftBitmap, 0, 0, 16, 32);
-
-                    if (dropDownStyle == ComboBoxStyle.Simple)
-                    {
-                        using (TextureBrush MidImageBrush = new TextureBrush(MidBitmap) { WrapMode = System.Drawing.Drawing2D.WrapMode.Tile })
-                            graphics.FillRectangle(MidImageBrush, new Rectangle(16, 0, this.Width - 32, 32));
-                        graphics.DrawImage(RightBitmap, this.Width - 16, 0, 16, 32);
-                    }
-                    else
-                    {
-                        using (TextureBrush MidImageBrush = new TextureBrush(MidBitmap) { WrapMode = System.Drawing.Drawing2D.WrapMode.Tile })
-                            graphics.FillRectangle(MidImageBrush, new Rectangle(16, 0, this.Width - 41, 32));
-                        graphics.DrawImage(ButtonBitmap, this.Width - 25, 0, 25, 32);
-                    }
-                }
-            }
-            catch { }
-        }
-
         private void ComboBox_Resize(object sender, EventArgs e)
         {
-            this.BackgroundImage = null;
-            CreateBGImage(ref BGImage);
-            this.BackgroundImage = BGImage;
-
-            if (dropDownStyle == ComboBoxStyle.DropDownList)
-            {
-                InnerLabel.Left = 16;
-                InnerLabel.Width = this.Width - 16 - 26;
-                InnerLabel.Top = (this.Height - InnerLabel.Height) / 2;
-            }
-            else
-            {
-                InnerTextBox.Left = 16;
-                InnerTextBox.Width = this.Width - 16 - (dropDownStyle== ComboBoxStyle.DropDown?26:17);
-                InnerTextBox.Top = (this.Height - InnerTextBox.Height) / 2;
-            }
+            DropDownStyle = dropDownStyle;
         }
 
         private void CreateDropDownHost()
@@ -264,7 +246,7 @@ namespace LeonUI.Controls
             DropDown?.Invoke(this, new EventArgs());
 
             ItemsListBox.MinimumSize = new Size(this.Width,0);
-            ItemsListBox.MaximumSize = new Size(0, 300);
+            ItemsListBox.MaximumSize = new Size(0, 200);
 
             Point locationOnClient = LocationOnClient(this);
             Point locationOnScreen= new Point(PointToScreen(locationOnClient).X, PointToScreen(locationOnClient).Y);
