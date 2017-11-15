@@ -29,9 +29,9 @@ namespace LeonUI.Controls
             {
                 centerRectangle = value;
 
-                renderedNormalBitmap = BitmapProcessor.RenderBGI(normalBitmap,this.Size,value);
-                renderedEnterBitmap = BitmapProcessor.RenderBGI(enterBitmap, this.Size, value);
-                renderedDownBitmap = BitmapProcessor.RenderBGI(downBitmap, this.Size, value);
+                BitmapProcessor.RenderBGI(normalBitmap,this.Size,value,ref renderedNormalBitmap);
+                BitmapProcessor.RenderBGI(normalBitmap, this.Size, value, ref renderedEnterBitmap);
+                BitmapProcessor.RenderBGI(normalBitmap, this.Size, value, ref renderedDownBitmap);
 
                 this.Image = renderedNormalBitmap;
             }
@@ -47,7 +47,7 @@ namespace LeonUI.Controls
                 normalBitmap?.Dispose();
                 renderedNormalBitmap?.Dispose();
                 normalBitmap = value;
-                renderedNormalBitmap = BitmapProcessor.RenderBGI(value, this.Size, centerRectangle);
+                BitmapProcessor.RenderBGI(value, this.Size, centerRectangle, ref renderedNormalBitmap);
                 Image = renderedNormalBitmap;
             }
         }
@@ -63,7 +63,7 @@ namespace LeonUI.Controls
                 enterBitmap?.Dispose();
                 renderedEnterBitmap?.Dispose();
                 enterBitmap = value;
-                renderedEnterBitmap = BitmapProcessor.RenderBGI(value, this.Size, centerRectangle);
+                BitmapProcessor.RenderBGI(value, this.Size, centerRectangle, ref renderedEnterBitmap);
             }
         }
 
@@ -78,7 +78,7 @@ namespace LeonUI.Controls
                 downBitmap?.Dispose();
                 renderedDownBitmap?.Dispose();
                 downBitmap = value;
-                renderedDownBitmap = BitmapProcessor.RenderBGI(value, this.Size, centerRectangle);
+                BitmapProcessor.RenderBGI(value, this.Size, centerRectangle, ref renderedDownBitmap);
             }
         }
 
@@ -94,9 +94,10 @@ namespace LeonUI.Controls
         protected new void BindingEvents()
         {
             Resize += new EventHandler((s, e) => {
-                renderedNormalBitmap = BitmapProcessor.RenderBGI(normalBitmap, this.Size, centerRectangle);
-                renderedEnterBitmap = BitmapProcessor.RenderBGI(enterBitmap, this.Size, centerRectangle);
-                renderedDownBitmap = BitmapProcessor.RenderBGI(downBitmap, this.Size, centerRectangle);
+                BitmapProcessor.RenderBGI(normalBitmap, this.Size, centerRectangle, ref renderedNormalBitmap);
+                BitmapProcessor.RenderBGI(normalBitmap, this.Size, centerRectangle, ref renderedEnterBitmap);
+                BitmapProcessor.RenderBGI(normalBitmap, this.Size, centerRectangle, ref renderedDownBitmap);
+                
                 this.Image = renderedNormalBitmap;
                 Invalidate();
             });
