@@ -13,33 +13,37 @@ using System.Runtime.InteropServices;
 
 namespace LeonUI.Controls
 {
-    public partial class MyComBox : UserControl
+    public partial class ComboBox : UserControl
     {
 
         public int SelectedIndex
         {
-            get => ItemsList.SelectedIndex;
-            set => ItemsList.SelectedIndex=value;
+            get => ItemsListBox.SelectedIndex;
+            set => ItemsListBox.SelectedIndex=value;
         }
 
         public event EventHandler DropDown;
 
         public event EventHandler SelectedIndexChanged
         {
-            add {ItemsList.SelectedIndexChanged += value;}
-            remove { ItemsList.SelectedIndexChanged -= value; }
+            add {ItemsListBox.SelectedIndexChanged += value;}
+            remove { ItemsListBox.SelectedIndexChanged -= value; }
         }
 
-        bool CanCloseForm = false;
-
-        /// <summary>
-        /// 下拉项目列表窗体
-        /// </summary>
-        private ItemsForm _itemsForm = null;
         /// <summary>
         /// 下拉项目列表
         /// </summary>
-        private ListBox ItemsList = null;
+        private ListBox ItemsListBox = null;
+
+        /// <summary>
+        /// 下拉项目浮动容器
+        /// </summary>
+        private ToolStripDropDown toolStripDropDown = null;
+
+        /// <summary>
+        /// 下拉项目容器
+        /// </summary>
+        private ToolStripControlHost toolStripControlHost = null;
 
         [Browsable(true)]
         // System.Windows.Forms.ListBox
@@ -51,13 +55,13 @@ namespace LeonUI.Controls
 
         public ListBox.ObjectCollection Items
         {
-            get => (ItemsList?.Items)??null;
+            get => (ItemsListBox?.Items)??null;
             set
             {
                 Text = "";
-                ItemsList.Items.Clear();
+                ItemsListBox.Items.Clear();
                 foreach (string s in value)
-                    ItemsList.Items.Add(s);
+                    ItemsListBox.Items.Add(s);
             }
         }
 
@@ -150,15 +154,17 @@ namespace LeonUI.Controls
             }
         }
 
-        public MyComBox()
+        public ComboBox()
         {
             CheckForIllegalCrossThreadCalls = false;
             InitializeComponent();
             this.OnResize(null);
-            CreateItemsForm();
+            CreateDropDownHost();
+
+            this.MinimumSize = new Size(0,32);
+            this.MaximumSize = MinimumSize;
 
             InnerLabel.Click += new EventHandler(MyComBox_Click);
-            //InnerTextBox.GotFocus += new EventHandler(MyComBox_Click);
         }
 
         static Bitmap RotateFlipBitmap(Bitmap iniBitmap)
@@ -217,90 +223,50 @@ namespace LeonUI.Controls
             }
         }
 
-        private void CreateItemsForm()
+        private void CreateDropDownHost()
         {
-            _itemsForm = new ItemsForm()
+            toolStripDropDown = new ToolStripDropDown()
             {
-                Name = "ItemsName",
-                FormBorderStyle = FormBorderStyle.None,
-                Text = "",
-                TopLevel = true,
-                ShowIcon=false,
-                ShowInTaskbar=false,
+                AutoClose = true,
+                DropShadowEnabled = true,
+                Opacity = 0.9,
+                AllowTransparency = true,
+                Padding = new Padding(1,0,1,0),
+                ShowItemToolTips=false
             };
-            _itemsForm.Deactivate += new EventHandler((s, e) => { _itemsForm.Hide(); });
-            _itemsForm.FormClosing += new FormClosingEventHandler((s,e)=> { if (!CanCloseForm) { e.Cancel = true; _itemsForm.Hide(); }});
-            
-            ItemsList = new ListBox()
+
+            ItemsListBox = new ListBox()
             {
                 Dock = DockStyle.Fill,
-                BorderStyle = BorderStyle.FixedSingle,
+                BorderStyle = BorderStyle.None,
                 Font = InnerLabel.Font,
                 ForeColor = InnerLabel.ForeColor,
                 IntegralHeight = false,
             };
-            _itemsForm.Controls.Add(ItemsList);
-            ItemsList.SelectedIndexChanged += new EventHandler((s,e)=> 
+
+            ItemsListBox.SelectedIndexChanged += new EventHandler((s,e)=> 
             {
-                this.Text = ItemsList.SelectedItem.ToString();
-                _itemsForm.Hide();
+                this.Text = ItemsListBox.SelectedItem.ToString();
+                toolStripDropDown.Hide();
             });
+
+            toolStripControlHost = new ToolStripControlHost(ItemsListBox);
+            toolStripDropDown.Items.Add(toolStripControlHost);
         }
 
         public void DropDownList()
         {
             DropDown?.Invoke(this, new EventArgs());
 
-            _itemsForm.Width = this.Width;
-            _itemsForm.Height = 0;
-            _itemsForm.MaximumSize = new Size(this.Width,ItemsList.ItemHeight * 8);
-            _itemsForm.MinimumSize = new Size(this.Width,10);
+            ItemsListBox.MinimumSize = new Size(this.Width,0);
+            ItemsListBox.MaximumSize = new Size(0, 300);
 
-            bool DisplayAbove = false;
-            int TargetHeight = Math.Min(_itemsForm.MaximumSize.Height, ItemsList.PreferredHeight);
             Point locationOnClient = LocationOnClient(this);
             Point locationOnScreen= new Point(PointToScreen(locationOnClient).X, PointToScreen(locationOnClient).Y);
             locationOnScreen.Offset(-locationOnClient.X,-locationOnClient.Y);
+            locationOnScreen.Offset(0, this.Height);
 
-            _itemsForm.Show();
-
-            if (Screen.FromPoint(locationOnScreen).Bounds.Height - locationOnScreen.Y < TargetHeight)
-            {
-                DisplayAbove = true;
-                _itemsForm.Location = locationOnScreen;
-            }
-            else
-            {
-                locationOnScreen.Y += this.Height;
-                _itemsForm.Location = locationOnScreen;
-            }
-
-            ThreadPool.QueueUserWorkItem(new WaitCallback((displayAbove) => {
-                try
-                {
-                    if ((bool)displayAbove)
-                    {
-                        while (_itemsForm.Height < TargetHeight)
-                        {
-                            if (!_itemsForm.Visible) break;
-                            _itemsForm.Top =Math.Max(0, _itemsForm.Top - 10);
-                            _itemsForm.Height += 10;
-                            Thread.Sleep(5);
-                        }
-                        _itemsForm.Top = locationOnScreen.Y - _itemsForm.Height;
-                    }
-                    else
-                    {
-                        while (_itemsForm.Height < TargetHeight)
-                        {
-                            if (!_itemsForm.Visible) break;
-                            _itemsForm.Height += 10;
-                            Thread.Sleep(5);
-                        }
-                    }
-                }
-                catch {}
-            }), DisplayAbove);
+            toolStripDropDown.Show(locationOnScreen);
         }
 
         private Point LocationOnClient(Control c)
@@ -317,24 +283,6 @@ namespace LeonUI.Controls
                 DropDownList();
         }
 
-
-        private class ItemsForm : Form
-        {
-            const int WS_EX_NOACTIVATE = 0x08000000;
-
-            //重载Form的CreateParams属性，添加不获取焦点属性值。  
-            protected override CreateParams CreateParams
-            {
-                get
-                {
-                    CreateParams cp = base.CreateParams;
-                    cp.ExStyle |= WS_EX_NOACTIVATE;
-                    cp.Parent = IntPtr.Zero;
-                    return cp;
-                }
-
-            }
-        }
     }
 
 }

@@ -1,6 +1,6 @@
 ﻿namespace LeonUI.Controls
 {
-    partial class MyComBox
+    partial class ComboBox
     {
         /// <summary> 
         /// 必需的设计器变量。
@@ -13,12 +13,9 @@
         /// <param name="disposing">如果应释放托管资源，为 true；否则为 false。</param>
         protected override void Dispose(bool disposing)
         {
-            if (!CanCloseForm)
-            {
-                CanCloseForm = true;
-                _itemsForm.Close();
-                _itemsForm = null;
-            }
+            toolStripDropDown?.Dispose();
+            toolStripControlHost?.Dispose();
+            ItemsListBox?.Dispose();
 
             if (disposing && (components != null))
             {
