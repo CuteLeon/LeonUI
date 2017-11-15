@@ -43,61 +43,61 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BitmapProcessor.cs" />
-    <Compile Include="Buttons\FlatButton.cs">
+    <Compile Include="Controls\Buttons\FlatButton.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Buttons\FlatButton.Designer.cs">
+    <Compile Include="Controls\Buttons\FlatButton.Designer.cs">
       <DependentUpon>FlatButton.cs</DependentUpon>
     </Compile>
-    <Compile Include="Buttons\BigButton.cs">
+    <Compile Include="Controls\Buttons\BigButton.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Buttons\BigButton.Designer.cs">
+    <Compile Include="Controls\Buttons\BigButton.Designer.cs">
       <DependentUpon>BigButton.cs</DependentUpon>
     </Compile>
-    <Compile Include="Buttons\ImageButton.cs">
+    <Compile Include="Controls\Buttons\ImageButton.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Buttons\ImageButton.Designer.cs">
+    <Compile Include="Controls\Buttons\ImageButton.Designer.cs">
       <DependentUpon>ImageButton.cs</DependentUpon>
     </Compile>
-    <Compile Include="Buttons\RoundedButton.cs">
+    <Compile Include="Controls\Buttons\RoundedButton.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Buttons\RoundedButton.Designer.cs">
+    <Compile Include="Controls\Buttons\RoundedButton.Designer.cs">
       <DependentUpon>RoundedButton.cs</DependentUpon>
     </Compile>
-    <Compile Include="TitleButtons\CloseButton.cs">
+    <Compile Include="Controls\TitleButtons\CloseButton.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="TitleButtons\CloseButton.Designer.cs">
+    <Compile Include="Controls\TitleButtons\CloseButton.Designer.cs">
       <DependentUpon>CloseButton.cs</DependentUpon>
     </Compile>
-    <Compile Include="Buttons\LargeButton.cs">
+    <Compile Include="Controls\Buttons\LargeButton.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Buttons\LargeButton.Designer.cs">
+    <Compile Include="Controls\Buttons\LargeButton.Designer.cs">
       <DependentUpon>LargeButton.cs</DependentUpon>
     </Compile>
-    <Compile Include="TitleButtons\MinButton.cs">
+    <Compile Include="Controls\TitleButtons\MinButton.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="TitleButtons\MinButton.Designer.cs">
+    <Compile Include="Controls\TitleButtons\MinButton.Designer.cs">
       <DependentUpon>MinButton.cs</DependentUpon>
     </Compile>
-    <Compile Include="TitleButtons\RestoreButton.cs">
+    <Compile Include="Controls\TitleButtons\RestoreButton.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="TitleButtons\RestoreButton.Designer.cs">
+    <Compile Include="Controls\TitleButtons\RestoreButton.Designer.cs">
       <DependentUpon>RestoreButton.cs</DependentUpon>
     </Compile>
-    <Compile Include="TitleButtons\MaxButton.cs">
+    <Compile Include="Controls\TitleButtons\MaxButton.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="TitleButtons\MaxButton.Designer.cs">
+    <Compile Include="Controls\TitleButtons\MaxButton.Designer.cs">
       <DependentUpon>MaxButton.cs</DependentUpon>
     </Compile>
-    <Compile Include="Labels\ShadowLabel.cs" />
+    <Compile Include="Controls\Labels\ShadowLabel.cs" />
     <Compile Include="Forms\LeonMessageBox.cs">
       <SubType>Form</SubType>
     </Compile>
