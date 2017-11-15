@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.Threading;
 
 namespace LeonUI.Forms.Tests
 {
@@ -15,16 +16,31 @@ namespace LeonUI.Forms.Tests
     public class LeonMessageBoxTests
     {
         [TestMethod()]
+        [STAThread]
         public void LeonMessageBoxTest()
         {
-            LeonMessageBox leonMessageBox = new LeonMessageBox("123", "456", LeonMessageBox.IconType.Question) ;
-            Debug.Print( leonMessageBox.ShowDialog(
-                new Form()
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+
+            Form HostForm = new Form()
+            {
+                Icon = Icon.FromHandle((Bitmap.FromFile(@"D:\MyPictures\FUI\_0008_19.jpg.jpg_I_R.jpg") as Bitmap).GetHicon()),
+                BackgroundImageLayout = ImageLayout.Stretch,
+                BackgroundImage = Bitmap.FromFile(@"D:\MyPictures\DesktopBackground\gamersky_03origin_05_20171014155457C.jpg")
+            };
+            HostForm.Shown += new EventHandler((s, e) =>
+            {
+                new Thread(new ThreadStart(() =>
                 {
-                    Icon = Icon.FromHandle((Bitmap.FromFile(@"D:\MyPictures\FUI\_0008_19.jpg.jpg_I_R.jpg") as Bitmap).GetHicon()),
-                    BackgroundImage = Bitmap.FromFile(@"D:\MyPictures\DesktopBackground\gamersky_03origin_05_20171014155457C.jpg")
-                }
-            ).ToString());
+                    Thread.Sleep(3000);
+                    LeonMessageBox leonMessageBox = new LeonMessageBox("123", "456", LeonMessageBox.IconType.Question);
+                    Debug.Print(leonMessageBox.ShowDialog(HostForm).ToString());
+                    HostForm.Invoke(new Action(()=> {
+                    }));
+                })).Start();
+            });
+
+            Application.Run(HostForm);
         }
 
     }

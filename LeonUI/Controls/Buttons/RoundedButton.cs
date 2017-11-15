@@ -30,8 +30,8 @@ namespace LeonUI.Controls
                 centerRectangle = value;
 
                 BitmapProcessor.RenderBGI(normalBitmap,this.Size,value,ref renderedNormalBitmap);
-                BitmapProcessor.RenderBGI(normalBitmap, this.Size, value, ref renderedEnterBitmap);
-                BitmapProcessor.RenderBGI(normalBitmap, this.Size, value, ref renderedDownBitmap);
+                BitmapProcessor.RenderBGI(enterBitmap, this.Size, value, ref renderedEnterBitmap);
+                BitmapProcessor.RenderBGI(downBitmap, this.Size, value, ref renderedDownBitmap);
 
                 this.Image = renderedNormalBitmap;
             }
@@ -95,8 +95,8 @@ namespace LeonUI.Controls
         {
             Resize += new EventHandler((s, e) => {
                 BitmapProcessor.RenderBGI(normalBitmap, this.Size, centerRectangle, ref renderedNormalBitmap);
-                BitmapProcessor.RenderBGI(normalBitmap, this.Size, centerRectangle, ref renderedEnterBitmap);
-                BitmapProcessor.RenderBGI(normalBitmap, this.Size, centerRectangle, ref renderedDownBitmap);
+                BitmapProcessor.RenderBGI(enterBitmap, this.Size, centerRectangle, ref renderedEnterBitmap);
+                BitmapProcessor.RenderBGI(downBitmap, this.Size, centerRectangle, ref renderedDownBitmap);
                 
                 this.Image = renderedNormalBitmap;
                 Invalidate();
