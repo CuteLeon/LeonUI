@@ -89,6 +89,7 @@ namespace LeonUI.Controls
                         {
                             InnerLabel.Hide();
                             InnerTextBox.Width = this.Width - 42;
+                            InnerTextBox.Top=(this.Height- InnerTextBox.Height)/2;
                             InnerTextBox.Show();
                             CenterRectangle.Width = 60;
                             StaticBGImage = UnityResource.ComboBoxBGI;
@@ -98,6 +99,7 @@ namespace LeonUI.Controls
                         {
                             InnerTextBox.Hide();
                             InnerLabel.Width = this.Width - 42;
+                            InnerTextBox.Top = (this.Height - InnerTextBox.Height) / 2;
                             InnerLabel.Show();
                             CenterRectangle.Width = 60;
                             StaticBGImage = UnityResource.ComboBoxBGI;
@@ -107,12 +109,15 @@ namespace LeonUI.Controls
                         {
                             InnerLabel.Hide();
                             InnerTextBox.Width = this.Width - 34;
+                            InnerTextBox.Top = (this.Height - InnerTextBox.Height) / 2;
                             InnerTextBox.Show();
                             CenterRectangle.Width = 70;
                             StaticBGImage = UnityResource.DefaultButton_0;
                             break;
                         }
                 }
+
+                if (this.Size.Equals(BGImage?.Size)) return;
 
                 this.BackgroundImage = null;
                 BitmapProcessor.RenderBGI(StaticBGImage, this.Size, CenterRectangle, ref BGImage);
@@ -124,27 +129,7 @@ namespace LeonUI.Controls
         /// ComboBox 背景图资源
         /// </summary>
         static Bitmap StaticBGImage = UnityResource.ComboBoxBGI;
-
-        /// <summary>
-        /// 左边切图
-        /// </summary>
-        static Bitmap LeftBitmap = StaticBGImage.Clone(new Rectangle(0, 0, 16, 32), System.Drawing.Imaging.PixelFormat.Format32bppArgb);
-
-        /// <summary>
-        /// 右边切图
-        /// </summary>
-        static Bitmap RightBitmap = RotateFlipBitmap(LeftBitmap);
         
-        /// <summary>
-        /// 按钮图像
-        /// </summary>
-        static Bitmap ButtonBitmap = StaticBGImage.Clone(new Rectangle(77, 0, 25, 32), System.Drawing.Imaging.PixelFormat.Format32bppArgb);
-
-        /// <summary>
-        /// 中间切图
-        /// </summary>
-        static Bitmap MidBitmap = StaticBGImage.Clone(new Rectangle(16, 0, 61, 32), System.Drawing.Imaging.PixelFormat.Format24bppRgb);
-
         /// <summary>
         /// 背景图像
         /// </summary>
@@ -179,7 +164,7 @@ namespace LeonUI.Controls
         }
 
         /// <summary>
-        /// 设置ComboBox控件字体
+        /// 设置控件字体
         /// </summary>
         public new Font Font
         {
@@ -191,12 +176,13 @@ namespace LeonUI.Controls
                 InnerLabel.Size = InnerTextBox.Size;
 
                 this.MinimumSize = new Size(45, InnerTextBox.Height + 12);
-                this.Width = InnerTextBox.Width + 16 + (dropDownStyle == ComboBoxStyle.DropDown ? 26 : 17);
+
+                DropDownStyle = dropDownStyle;
             }
         }
 
         /// <summary>
-        /// 设置ComboBox控件字体颜色
+        /// 设置控件字体颜色
         /// </summary>
         public new Color ForeColor
         {
@@ -219,13 +205,6 @@ namespace LeonUI.Controls
 
             InnerLabel.Click += new EventHandler(ComboBox_Click);
             InnerTextBox.TextChanged += new EventHandler((s,e)=>InnerLabel.Text=InnerTextBox.Text);
-        }
-
-        static Bitmap RotateFlipBitmap(Bitmap iniBitmap)
-        {
-            Bitmap RotatedBitmap = iniBitmap.Clone() as Bitmap;
-            RotatedBitmap.RotateFlip(RotateFlipType.Rotate180FlipY);
-            return RotatedBitmap;
         }
 
         private void ComboBox_Resize(object sender, EventArgs e)

@@ -15,7 +15,11 @@ namespace LeonUI.Controls
     {
         private Rectangle CenterRectangle = new Rectangle(17, 16, 70, 2);
 
-        public new event EventHandler TextChanged;
+        public new event EventHandler TextChanged
+        {
+            add => InnerTextBox.TextChanged += value;
+            remove => InnerTextBox.TextChanged -= value;
+        }
         
         //用于把属性显示在属性面板中，并在代码生成器中储存属性的值
         [Browsable(true)]
@@ -23,11 +27,7 @@ namespace LeonUI.Controls
         public override string Text
         {
             get => InnerTextBox.Text;
-            set
-            {
-                InnerTextBox.Text=value;
-                TextChanged?.Invoke(this, new EventArgs());
-            }
+            set => InnerTextBox.Text=value;
         }
 
         /// <summary>
@@ -35,27 +35,60 @@ namespace LeonUI.Controls
         /// </summary>
         private Bitmap BGImage = null;
 
+        /// <summary>
+        /// 文字水平方向
+        /// </summary>
+        public HorizontalAlignment TextAlign
+        {
+            get => InnerTextBox.TextAlign;
+            set => InnerTextBox.TextAlign = value;
+        }
+
+        /// <summary>
+        /// 设置控件字体
+        /// </summary>
+        public new Font Font
+        {
+            get => InnerTextBox.Font;
+            set
+            {
+                InnerTextBox.Font = value;
+                this.MinimumSize = new Size(45, InnerTextBox.Height + 12);
+                InnerTextBox.Top = (this.Height - InnerTextBox.Height) / 2;
+            }
+        }
+
+        /// <summary>
+        /// 设置控件字体颜色
+        /// </summary>
+        public new Color ForeColor
+        {
+            get => InnerTextBox.ForeColor;
+            set
+            {
+                InnerTextBox.ForeColor = value;
+            }
+        }
+
         public SmipleTextBox()
         {
             InitializeComponent();
 
+            base.SetStyle(ControlStyles.FixedHeight, false);
             this.OnResize(null);
 
-            this.MinimumSize = new Size(32,32);
-            this.MaximumSize = new Size(0,32);
+            this.MinimumSize = new Size(43,34);
         }
 
         private void SmipleTextBox_Resize(object sender, EventArgs e)
         {
+            InnerTextBox.Width = this.Width - 32;
+            InnerTextBox.Top = (this.Height - InnerTextBox.Height) / 2;
+
             if (this.Size.Equals(BGImage?.Size)) return;
-
             this.BackgroundImage = null;
-            //CreateBGImage(ref BGImage);
+            BitmapProcessor.RenderBGI(UnityResource.TextBoxBGI, this.Size, CenterRectangle, ref BGImage);
             this.BackgroundImage = BGImage;
-
-            InnerTextBox.Left = 16;
-            InnerTextBox.Width = this.Width - 16 - 16;
-            InnerTextBox.Top = (this.Height - InnerTextBox.Height) / 2+1;
         }
 
     }
