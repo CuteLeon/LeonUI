@@ -68,11 +68,11 @@
       <DependentUpon>RoundedButton.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\hr.cs" />
-    <Compile Include="Controls\SmipleTextBox.cs">
+    <Compile Include="Controls\RoundedTextBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\SmipleTextBox.Designer.cs">
-      <DependentUpon>SmipleTextBox.cs</DependentUpon>
+    <Compile Include="Controls\RoundedTextBox.Designer.cs">
+      <DependentUpon>RoundedTextBox.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\RoundedComboBox.cs">
       <SubType>UserControl</SubType>
@@ -154,8 +154,8 @@
     <Folder Include="Interface\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Controls\SmipleTextBox.resx">
-      <DependentUpon>SmipleTextBox.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\RoundedTextBox.resx">
+      <DependentUpon>RoundedTextBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\RoundedComboBox.resx">
       <DependentUpon>RoundedComboBox.cs</DependentUpon>

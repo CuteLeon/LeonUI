@@ -1,6 +1,6 @@
 ﻿namespace LeonUI.Controls
 {
-    partial class SmipleTextBox
+    partial class RoundedTextBox
     {
         /// <summary> 
         /// 必需的设计器变量。
@@ -43,7 +43,7 @@
             this.InnerTextBox.TabIndex = 0;
             this.InnerTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // SmipleTextBox
+            // RoundedTextBox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
@@ -53,10 +53,10 @@
             this.Controls.Add(this.InnerTextBox);
             this.DoubleBuffered = true;
             this.Margin = new System.Windows.Forms.Padding(0);
-            this.Name = "SmipleTextBox";
+            this.Name = "RoundedTextBox";
             this.Padding = new System.Windows.Forms.Padding(16, 0, 16, 0);
             this.Size = new System.Drawing.Size(102, 32);
-            this.Resize += new System.EventHandler(this.SmipleTextBox_Resize);
+            this.Resize += new System.EventHandler(this.RoundedTextBox_Resize);
             this.ResumeLayout(false);
             this.PerformLayout();
 
