@@ -136,6 +136,7 @@
             this.Name = "NoBorderSizableForm";
             this.Padding = new System.Windows.Forms.Padding(5);
             this.Text = "NoBorderSizableForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.NoBorderSizableForm_FormClosing);
             this.Load += new System.EventHandler(this.NoBorderSizableForm_Load);
             this.Resize += new System.EventHandler(this.NoBorderSizableForm_Resize);
             this.TitlePanel.ResumeLayout(false);

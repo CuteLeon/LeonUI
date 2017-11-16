@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -18,8 +19,8 @@ namespace LeonUI.Forms
             get => MaxButton.Visible || RestoreButton.Visible;
             set
             {
-                MaxButton.Visible = value;
-                MinButton.Visible = value;
+                MaxButton.Visible = value && WindowState == FormWindowState.Normal;
+                RestoreButton.Visible = value && WindowState == FormWindowState.Maximized;
             }
         }
 
@@ -49,6 +50,11 @@ namespace LeonUI.Forms
                 IconLabel.Image = value.ToBitmap();
             }
         }
+        
+        public string CloseTitle = "确定要关闭吗？";
+        public string CloseMessage = "您确定要关闭窗口吗？";
+        public bool ShowMessageBeforeClose = false;
+        private bool AllowToClose = false;
 
         public ContentAlignment TitleAglin
         {
@@ -58,6 +64,8 @@ namespace LeonUI.Forms
 
         private void NoBorderSizableForm_Load(object sender, EventArgs e)
         {
+            //CheckForIllegalCrossThreadCalls = false;
+
             TitleLabel.MouseDown += new MouseEventHandler(UnityModule.MoveFormViaMouse);
             IconLabel.MouseDown += new MouseEventHandler(UnityModule.MoveFormViaMouse);
         }
@@ -150,8 +158,8 @@ namespace LeonUI.Forms
                     {
                         if (MaximizeBox)
                         {
-                            MaxButton.Show();
-                            RestoreButton.Hide();
+                            MaxButton.Hide();
+                            RestoreButton.Show();
                         }
                         break;
                     }
@@ -163,11 +171,40 @@ namespace LeonUI.Forms
                     {
                         if (MaximizeBox)
                         {
-                            MaxButton.Hide();
-                            RestoreButton.Show();
+                            RestoreButton.Hide();
+                            MaxButton.Show();
                         }
                         break;
                     }
+            }
+            this.Invalidate();
+        }
+
+        private void NoBorderSizableForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!ShowMessageBeforeClose) return;
+
+            if (!AllowToClose)
+            {
+                e.Cancel = true;
+                if (new LeonMessageBox(CloseTitle, CloseMessage, LeonMessageBox.IconType.Question).ShowDialog(this) == DialogResult.OK)
+                {
+                    AllowToClose = true;
+
+                    new Thread(new ThreadStart(delegate
+                    {
+                        while (this.Opacity > 0)
+                        {
+                            this.Invoke(new Action(() => {
+                                this.Top -= 1;
+                                this.Opacity -= 0.1;
+                            }));
+                            Thread.Sleep(30);
+                        }
+
+                        this.Close();
+                    })).Start();
+                }
             }
         }
 
