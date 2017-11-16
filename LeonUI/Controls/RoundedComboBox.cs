@@ -24,6 +24,12 @@ namespace LeonUI.Controls
             set => ItemsListBox.SelectedIndex=value;
         }
 
+        public new event EventHandler TextChanged
+        {
+            add => InnerTextBox.TextChanged += value;
+            remove => InnerTextBox.TextChanged -= value;
+        }
+
         public event EventHandler DropDown;
 
         public event EventHandler SelectedIndexChanged
@@ -152,8 +158,23 @@ namespace LeonUI.Controls
             get => InnerLabel.Text;
             set
             {
-                InnerTextBox.Text = value;
                 InnerLabel.Text = value;
+                InnerTextBox.Text = value;
+            }
+        }
+
+        /// <summary>
+        /// 文字水平方向
+        /// </summary>
+        public HorizontalAlignment TextAlign
+        {
+            get => InnerTextBox.TextAlign;
+            set
+            {
+                InnerTextBox.TextAlign = value;
+                if (value == HorizontalAlignment.Left) InnerLabel.TextAlign = ContentAlignment.MiddleLeft;
+                else if (value == HorizontalAlignment.Center) InnerLabel.TextAlign = ContentAlignment.MiddleCenter;
+                else if (value == HorizontalAlignment.Right) InnerLabel.TextAlign = ContentAlignment.MiddleRight;
             }
         }
 
@@ -197,6 +218,7 @@ namespace LeonUI.Controls
             this.MinimumSize = new Size(45, this.Height);
 
             InnerLabel.Click += new EventHandler(ComboBox_Click);
+            InnerTextBox.TextChanged += new EventHandler((s,e)=>InnerLabel.Text=InnerTextBox.Text);
         }
 
         static Bitmap RotateFlipBitmap(Bitmap iniBitmap)
