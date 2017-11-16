@@ -117,8 +117,8 @@ namespace LeonUI.Controls
         public RoundedTextBox()
         {
             InitializeComponent();
+            SetStyle(ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.ResizeRedraw | ControlStyles.SupportsTransparentBackColor, true);
 
-            base.SetStyle(ControlStyles.FixedHeight, false);
             this.OnResize(null);
 
             this.MinimumSize = new Size(43,34);

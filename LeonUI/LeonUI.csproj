@@ -80,6 +80,12 @@
     <Compile Include="Controls\RoundedComboBox.Designer.cs">
       <DependentUpon>RoundedComboBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\RoundedCheckBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\RoundedCheckBox.Designer.cs">
+      <DependentUpon>RoundedCheckBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\TitleButtons\CloseButton.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -159,6 +165,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\RoundedComboBox.resx">
       <DependentUpon>RoundedComboBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\RoundedCheckBox.resx">
+      <DependentUpon>RoundedCheckBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\LeonMessageBox.resx">
       <DependentUpon>LeonMessageBox.cs</DependentUpon>
@@ -255,6 +264,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\TextBoxBGI.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CheckBox_Off_0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CheckBox_Off_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CheckBox_On_0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CheckBox_On_1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
