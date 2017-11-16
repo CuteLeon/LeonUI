@@ -169,9 +169,8 @@ namespace LeonUI.Controls
                 InnerTextBox.Font=value;
                 InnerLabel.Size = InnerTextBox.Size;
 
-                this.Width = InnerTextBox.Width + 16 + (dropDownStyle == ComboBoxStyle.DropDown ? 26 : 17);
                 this.MinimumSize = new Size(45, InnerTextBox.Height + 12);
-                this.MaximumSize = new Size(0,this.Height);
+                this.Width = InnerTextBox.Width + 16 + (dropDownStyle == ComboBoxStyle.DropDown ? 26 : 17);
             }
         }
 
@@ -196,7 +195,6 @@ namespace LeonUI.Controls
             CreateDropDownHost();
 
             this.MinimumSize = new Size(45, this.Height);
-            this.MaximumSize = new Size(0, this.Height);
 
             InnerLabel.Click += new EventHandler(ComboBox_Click);
         }
