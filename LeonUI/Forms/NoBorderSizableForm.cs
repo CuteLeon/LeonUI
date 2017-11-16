@@ -13,6 +13,25 @@ namespace LeonUI.Forms
 {
     public partial class NoBorderSizableForm : Form
     {
+        private Pen themePen = new Pen(Color.DeepSkyBlue,2);
+        public Color ThemeColor
+        {
+            get => themePen.Color;
+            set => themePen.Color = value;
+        }
+
+        public Font TitleFont
+        {
+            get => TitleLabel.Font;
+            set => TitleLabel.Font = value;
+        }
+
+        public Color TitlePanelBackColor
+        {
+            get => TitlePanel.BackColor;
+            set => TitlePanel.BackColor = value;
+        }
+
         public new bool MinimizeBox => MinButton.Visible;
         public new bool MaximizeBox
         {
@@ -206,6 +225,13 @@ namespace LeonUI.Forms
                     })).Start();
                 }
             }
+        }
+
+        private void NoBorderSizableForm_Paint(object sender, PaintEventArgs e)
+        {
+            this.Invoke(new Action(()=> {
+                e.Graphics.DrawRectangle(themePen,1,1,this.Width-2,this.Height-2);
+            }));
         }
 
     }
