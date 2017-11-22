@@ -30,18 +30,18 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NoBorderSizableForm));
             this.TitlePanel = new LeonUI.Panels.Panel();
+            this.TitleLabel = new System.Windows.Forms.Label();
             this.IconLabel = new System.Windows.Forms.Label();
             this.MinButton = new LeonUI.TitleButtons.MinButton();
             this.RestoreButton = new LeonUI.TitleButtons.RestoreButton();
             this.MaxButton = new LeonUI.TitleButtons.MaxButton();
             this.CloseButton = new LeonUI.TitleButtons.CloseButton();
-            this.TitleLabel = new System.Windows.Forms.Label();
             this.TitlePanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // TitlePanel
             // 
-            this.TitlePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
+            this.TitlePanel.BackColor = System.Drawing.Color.Transparent;
             this.TitlePanel.Controls.Add(this.TitleLabel);
             this.TitlePanel.Controls.Add(this.IconLabel);
             this.TitlePanel.Controls.Add(this.MinButton);
@@ -55,6 +55,20 @@
             this.TitlePanel.Name = "TitlePanel";
             this.TitlePanel.Size = new System.Drawing.Size(274, 24);
             this.TitlePanel.TabIndex = 0;
+            // 
+            // TitleLabel
+            // 
+            this.TitleLabel.AutoEllipsis = true;
+            this.TitleLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TitleLabel.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.TitleLabel.ForeColor = System.Drawing.Color.White;
+            this.TitleLabel.Location = new System.Drawing.Point(24, 0);
+            this.TitleLabel.Name = "TitleLabel";
+            this.TitleLabel.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
+            this.TitleLabel.Size = new System.Drawing.Size(130, 24);
+            this.TitleLabel.TabIndex = 6;
+            this.TitleLabel.Text = "NoBorderSizableForm";
+            this.TitleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // IconLabel
             // 
@@ -114,25 +128,12 @@
             this.CloseButton.Size = new System.Drawing.Size(30, 24);
             this.CloseButton.TabIndex = 0;
             // 
-            // TitleLabel
-            // 
-            this.TitleLabel.AutoEllipsis = true;
-            this.TitleLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TitleLabel.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.TitleLabel.ForeColor = System.Drawing.Color.White;
-            this.TitleLabel.Location = new System.Drawing.Point(24, 0);
-            this.TitleLabel.Name = "TitleLabel";
-            this.TitleLabel.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
-            this.TitleLabel.Size = new System.Drawing.Size(130, 24);
-            this.TitleLabel.TabIndex = 6;
-            this.TitleLabel.Text = "NoBorderSizableForm";
-            this.TitleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // NoBorderSizableForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(284, 261);
+            this.ControlBox = false;
             this.Controls.Add(this.TitlePanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "NoBorderSizableForm";

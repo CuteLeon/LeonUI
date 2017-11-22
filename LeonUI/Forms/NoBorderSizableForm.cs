@@ -13,11 +13,17 @@ namespace LeonUI.Forms
 {
     public partial class NoBorderSizableForm : Form
     {
-        private Pen themePen = new Pen(Color.DeepSkyBlue,2);
+        private Pen themePen = new Pen(Color.FromArgb(245, 200, 200, 200), 2);
+        private SolidBrush themeBrush = new SolidBrush(Color.FromArgb(245, 200, 200, 200));
         public Color ThemeColor
         {
             get => themePen.Color;
-            set => themePen.Color = value;
+            set
+            {
+                themeBrush.Color = value;
+                themePen.Color = value;
+                this.Invalidate();
+            }
         }
 
         public Font TitleFont
@@ -26,33 +32,27 @@ namespace LeonUI.Forms
             set => TitleLabel.Font = value;
         }
 
-        public Color TitlePanelBackColor
-        {
-            get => TitlePanel.BackColor;
-            set => TitlePanel.BackColor = value;
-        }
-
-        public new bool MinimizeBox => MinButton.Visible;
-        public new bool MaximizeBox
-        {
-            get => MaxButton.Visible || RestoreButton.Visible;
-            set
-            {
-                MaxButton.Visible = value && WindowState == FormWindowState.Normal;
-                RestoreButton.Visible = value && WindowState == FormWindowState.Maximized;
-            }
-        }
+        //public new bool MinimizeBox => MinButton.Visible;
+        //public new bool MaximizeBox
+        //{
+        //    get => MaxButton.Visible || RestoreButton.Visible;
+        //    set
+        //    {
+        //        MaxButton.Visible = value && WindowState == FormWindowState.Normal;
+        //        RestoreButton.Visible = value && WindowState == FormWindowState.Maximized;
+        //    }
+        //}
 
         public NoBorderSizableForm()
         {
             InitializeComponent();
         }
 
-        public new string Text
-        {
-            get => TitleLabel.Text;
-            set => TitleLabel.Text = value;
-        }
+        //public new string Text
+        //{
+        //    get => TitleLabel.Text;
+        //    set => TitleLabel.Text = value;
+        //}
 
         public Color TitleForeColor
         {
@@ -60,15 +60,15 @@ namespace LeonUI.Forms
             set => TitleLabel.ForeColor = value;
         }
 
-        public new Icon Icon
-        {
-            get => this.Icon;
-            set
-            {
-                this.Icon = value;
-                IconLabel.Image = value.ToBitmap();
-            }
-        }
+        //public new Icon Icon
+        //{
+        //    get => this.Icon;
+        //    set
+        //    {
+        //        this.Icon = value;
+        //        IconLabel.Image = value.ToBitmap();
+        //    }
+        //}
         
         public string CloseTitle = "确定要关闭吗？";
         public string CloseMessage = "您确定要关闭窗口吗？";
@@ -83,29 +83,63 @@ namespace LeonUI.Forms
 
         private void NoBorderSizableForm_Load(object sender, EventArgs e)
         {
-            //CheckForIllegalCrossThreadCalls = false;
-
-            TitleLabel.MouseDown += new MouseEventHandler(UnityModule.MoveFormViaMouse);
-            IconLabel.MouseDown += new MouseEventHandler(UnityModule.MoveFormViaMouse);
+            if (!DesignMode)
+            {
+                //CheckForIllegalCrossThreadCalls = false;
+                TitleLabel.MouseDown += new MouseEventHandler(UnityModule.MoveFormViaMouse);
+                IconLabel.MouseDown += new MouseEventHandler(UnityModule.MoveFormViaMouse);
+            }
         }
+
+        [Browsable(false)]
+        public new bool ControlBox
+        {
+            get
+            {
+                return false;
+            }
+            set
+            {
+                base.ControlBox = false;
+            }
+        }
+
 
         //为窗体添加阴影
         protected override CreateParams CreateParams
         {
             get
             {
-                CreateParams baseParams = base.CreateParams;
-                baseParams.ClassStyle |= 131072;
-                baseParams.ExStyle |= 33554432;
-                return baseParams;
+                if (!DesignMode)
+                {
+                    CreateParams baseParams = base.CreateParams;
+                    baseParams.ClassStyle |= 131072;
+                    baseParams.ExStyle |= 33554432;
+                    return baseParams;
+                }
+                else
+                {
+                    return base.CreateParams;
+                }
             }
         }
 
         //鼠标拖动边框
         protected override void WndProc(ref Message Msg)
         {
+            if (DesignMode)
+            {
+                base.WndProc(ref Msg);
+                return;
+            }
+
             switch (Msg.Msg)
             {
+                case UnityModule.WM_NCCALCSIZE:
+                    {
+
+                        break;
+                    }
                 case UnityModule.WM_NCHITTEST:
                     {
                         if (this.WindowState == FormWindowState.Maximized) return;
@@ -229,6 +263,10 @@ namespace LeonUI.Forms
 
         private void NoBorderSizableForm_Paint(object sender, PaintEventArgs e)
         {
+            if (DesignMode) return;
+            e.Graphics.FillRectangle(themeBrush,new Rectangle(0,0,this.Width,TitlePanel.Bottom));
+
+            if (this.WindowState == FormWindowState.Maximized) return;
             this.Invoke(new Action(()=> {
                 e.Graphics.DrawRectangle(themePen,1,1,this.Width-2,this.Height-2);
             }));

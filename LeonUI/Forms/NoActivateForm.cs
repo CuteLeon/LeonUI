@@ -24,10 +24,17 @@ namespace LeonUI.Forms
         {
             get
             {
-                CreateParams cp = base.CreateParams;
-                cp.ExStyle |= WS_EX_NOACTIVATE;
-                cp.Parent = IntPtr.Zero;
-                return cp;
+                if (!DesignMode)
+                {
+                    CreateParams cp = base.CreateParams;
+                    cp.ExStyle |= WS_EX_NOACTIVATE;
+                    cp.Parent = IntPtr.Zero;
+                    return cp;
+                }
+                else
+                {
+                    return base.CreateParams;
+                }
             }
         }
 

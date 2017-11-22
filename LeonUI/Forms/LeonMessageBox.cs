@@ -54,14 +54,20 @@ namespace LeonUI.Forms
             Error
         }
 
+        protected LeonMessageBox() { InitializeComponent();}
+
         public LeonMessageBox(string Title, string Message, IconType IconType, params object[] MessageValues):
             this(Title, string.Format(Message,MessageValues),IconType){ }
 
         public LeonMessageBox(string Title, string Message, IconType IconType)
         {
             InitializeComponent();
-            CheckForIllegalCrossThreadCalls = false;
-            this.StartPosition = (Owner == null ? FormStartPosition.CenterScreen : FormStartPosition.CenterParent);
+
+            if (!DesignMode)
+            {
+                CheckForIllegalCrossThreadCalls = false;
+                this.StartPosition = (Owner == null ? FormStartPosition.CenterScreen : FormStartPosition.CenterParent);
+            }
 
             Text = Title;
             TitleLabel.Text = Title;
@@ -78,34 +84,40 @@ namespace LeonUI.Forms
 
         private void LeonMessageBox_Load(object sender, EventArgs e)
         {
-            this.DoubleBuffered = true;
-            this.AutoScaleMode = AutoScaleMode.Dpi;
-            this.BackgroundImageLayout = ImageLayout.Stretch;
+            if (!DesignMode)
+            {
+                this.DoubleBuffered = true;
+                this.AutoScaleMode = AutoScaleMode.Dpi;
+                this.BackgroundImageLayout = ImageLayout.Stretch;
 
-            TitleLabel.MouseDown += new MouseEventHandler( UnityModule.MoveFormViaMouse);
+                TitleLabel.MouseDown += new MouseEventHandler( UnityModule.MoveFormViaMouse);
+            }
         }
 
         private void LeonMessageBox_Shown(object sender, EventArgs e)
         {
-            if (this.Owner != null)
+            if (!DesignMode)
             {
-                try
+                if (this.Owner != null)
                 {
-                    this.Icon = this.Owner.Icon;
-                    this.Font = this.Owner.Font;
-                    this.BackgroundImage = Owner.BackgroundImage;
+                    try
+                    {
+                        this.Icon = this.Owner.Icon;
+                        this.Font = this.Owner.Font;
+                        this.BackgroundImage = Owner.BackgroundImage;
+                    }
+                    catch
+                    { }
                 }
-                catch
-                { }
-            }
-            else
-            {
-                try
+                else
                 {
-                    this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
+                    try
+                    {
+                        this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
+                    }
+                    catch
+                    { }
                 }
-                catch
-                { }
             }
         }
 
@@ -116,6 +128,7 @@ namespace LeonUI.Forms
 
         private void CloseButton_Click(object sender, EventArgs e)
         {
+            if (DesignMode) return;
             new Thread(new ThreadStart(delegate
             {
                 while (this.Opacity > 0)
@@ -130,6 +143,7 @@ namespace LeonUI.Forms
 
         private void OKButton_Click(object sender, EventArgs e)
         {
+            if (DesignMode) return;
             new Thread(new ThreadStart(delegate
             {
                 while (this.Opacity > 0)
@@ -144,6 +158,7 @@ namespace LeonUI.Forms
 
         private void CancelButton_Click(object sender, EventArgs e)
         {
+            if (DesignMode) return;
             new Thread(new ThreadStart(delegate
             {
                 while (this.Opacity > 0)
@@ -163,6 +178,7 @@ namespace LeonUI.Forms
 
         private void LeonMessageBox_KeyPress(object sender, KeyPressEventArgs e)
         {
+            if (DesignMode) return;
             if (e.KeyChar == 13 || e.KeyChar == 27)
             {
                 new Thread(new ThreadStart(delegate
