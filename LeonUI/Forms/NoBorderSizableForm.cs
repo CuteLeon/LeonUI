@@ -32,27 +32,27 @@ namespace LeonUI.Forms
             set => TitleLabel.Font = value;
         }
 
-        //public new bool MinimizeBox => MinButton.Visible;
-        //public new bool MaximizeBox
-        //{
-        //    get => MaxButton.Visible || RestoreButton.Visible;
-        //    set
-        //    {
-        //        MaxButton.Visible = value && WindowState == FormWindowState.Normal;
-        //        RestoreButton.Visible = value && WindowState == FormWindowState.Maximized;
-        //    }
-        //}
+        public new bool MinimizeBox => MinButton.Visible;
+        public new bool MaximizeBox
+        {
+            get => MaxButton.Visible || RestoreButton.Visible;
+            set
+            {
+                MaxButton.Visible = value && WindowState == FormWindowState.Normal;
+                RestoreButton.Visible = value && WindowState == FormWindowState.Maximized;
+            }
+        }
 
         public NoBorderSizableForm()
         {
             InitializeComponent();
         }
 
-        //public new string Text
-        //{
-        //    get => TitleLabel.Text;
-        //    set => TitleLabel.Text = value;
-        //}
+        public new string Text
+        {
+            get => TitleLabel.Text;
+            set => TitleLabel.Text = value;
+        }
 
         public Color TitleForeColor
         {
@@ -60,16 +60,16 @@ namespace LeonUI.Forms
             set => TitleLabel.ForeColor = value;
         }
 
-        //public new Icon Icon
-        //{
-        //    get => this.Icon;
-        //    set
-        //    {
-        //        this.Icon = value;
-        //        IconLabel.Image = value.ToBitmap();
-        //    }
-        //}
-        
+        public new Icon Icon
+        {
+            get => this.Icon;
+            set
+            {
+                this.Icon = value;
+                IconLabel.Image = value.ToBitmap();
+            }
+        }
+
         public string CloseTitle = "确定要关闭吗？";
         public string CloseMessage = "您确定要关闭窗口吗？";
         public bool ShowMessageBeforeClose = false;
