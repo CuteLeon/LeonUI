@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 namespace LeonUI.TitleButtons
 {
+    [ToolboxBitmap(typeof(Button))]
     public partial class CloseButton : UserControl
     {
         public CloseButton()

@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 namespace LeonUI.Panels
 {
+    [ToolboxBitmap(typeof(FlowLayoutPanel))]
     public partial class FlowLayoutPanel : System.Windows.Forms.FlowLayoutPanel
     {
         public FlowLayoutPanel()

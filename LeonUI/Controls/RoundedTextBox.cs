@@ -13,6 +13,7 @@ using System.IO;
 
 namespace LeonUI.Controls
 {
+    [ToolboxBitmap(typeof(TextBox))]
     public partial class RoundedTextBox : UserControl
     {
         private Rectangle CenterRectangle = new Rectangle(17, 16, 70, 2);

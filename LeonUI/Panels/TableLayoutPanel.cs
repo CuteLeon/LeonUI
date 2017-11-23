@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 namespace LeonUI.Panels
 {
+    [ToolboxBitmap(typeof(TableLayoutPanel))]
     public partial class TableLayoutPanel : System.Windows.Forms.TableLayoutPanel
     {
         public TableLayoutPanel()

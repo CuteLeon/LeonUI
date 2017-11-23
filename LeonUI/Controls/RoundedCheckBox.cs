@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 namespace LeonUI.Controls
 {
+    [ToolboxBitmap(typeof(CheckBox))]
     public partial class RoundedCheckBox : UserControl
     {
         public event EventHandler CheckedChanged;

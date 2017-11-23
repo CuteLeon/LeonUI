@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 namespace LeonUI.Controls
 {
+    [ToolboxBitmap(typeof(Button))]
     [DefaultEvent("Click")]
     public partial class RoundedButton : ImageButton
     {

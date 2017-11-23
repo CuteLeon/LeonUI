@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 namespace LeonUI.Panels
 {
+    [ToolboxBitmap(typeof(Panel))]
     public partial class Panel : System.Windows.Forms.Panel
     {
         public Panel()

@@ -13,6 +13,7 @@ using System.Runtime.InteropServices;
 
 namespace LeonUI.Controls
 {
+    [ToolboxBitmap(typeof(ComboBox))]
     public partial class RoundedComboBox : UserControl
     {
 
