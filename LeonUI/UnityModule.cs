@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace LeonUI
 {
-    class UnityModule
+    public class UnityModule
     {
         //用于鼠标拖动无边框窗体
         [DllImportAttribute("user32.dll")] private static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
