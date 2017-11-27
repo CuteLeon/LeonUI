@@ -176,6 +176,18 @@
     <EmbeddedResource Include="Controls\RoundedCheckBox.resx">
       <DependentUpon>RoundedCheckBox.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\TitleButtons\CloseButton.resx">
+      <DependentUpon>CloseButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\TitleButtons\MaxButton.resx">
+      <DependentUpon>MaxButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\TitleButtons\MinButton.resx">
+      <DependentUpon>MinButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\TitleButtons\RestoreButton.resx">
+      <DependentUpon>RestoreButton.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\LeonMessageBox.resx">
       <DependentUpon>LeonMessageBox.cs</DependentUpon>
     </EmbeddedResource>

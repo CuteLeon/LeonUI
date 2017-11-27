@@ -35,6 +35,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.Transparent;
+            this.BackgroundImage = global::LeonUI.UnityResource.Max_0;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.DoubleBuffered = true;
             this.Name = "MaxButton";
             this.Size = new System.Drawing.Size(30, 30);
