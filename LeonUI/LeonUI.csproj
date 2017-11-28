@@ -39,7 +39,6 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
@@ -136,6 +135,12 @@
     <Compile Include="Forms\NoBorderSizableForm.Designer.cs">
       <DependentUpon>NoBorderSizableForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ProgressForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ProgressForm.Designer.cs">
+      <DependentUpon>ProgressForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Panels\FlowLayoutPanel.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -193,6 +198,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\NoBorderSizableForm.resx">
       <DependentUpon>NoBorderSizableForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ProgressForm.resx">
+      <DependentUpon>ProgressForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UnityResource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -300,6 +308,26 @@
     <None Include="Resources\CheckBox_On_1.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Ring_0.png" />
+    <None Include="Resources\Ring_1.png" />
+    <None Include="Resources\Ring_2.png" />
+    <None Include="Resources\Ring_3.png" />
+    <None Include="Resources\Ring_4.png" />
+    <None Include="Resources\Ring_5.png" />
+    <None Include="Resources\Ring_6.png" />
+    <None Include="Resources\Ring_7.png" />
+    <None Include="Resources\Ring_8.png" />
+    <None Include="Resources\Ring_9.png" />
+    <None Include="Resources\Ring_10.png" />
+    <None Include="Resources\Ring_11.png" />
+    <None Include="Resources\Ring_12.png" />
+    <None Include="Resources\Ring_13.png" />
+    <None Include="Resources\Ring_14.png" />
+    <None Include="Resources\Ring_15.png" />
+    <None Include="Resources\Ring_16.png" />
+    <None Include="Resources\Ring_17.png" />
+    <None Include="Resources\Ring_18.png" />
+    <None Include="Resources\Ring_19.png" />
     <Content Include="TaskList.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

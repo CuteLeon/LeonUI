@@ -11,6 +11,7 @@ using System.Windows.Forms;
 namespace LeonUI.TitleButtons
 {
     [ToolboxBitmap(typeof(Button))]
+    [DefaultEvent("Click")]
     public partial class MaxButton : UserControl
     {
         public MaxButton()
