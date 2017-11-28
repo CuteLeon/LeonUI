@@ -68,6 +68,12 @@
     <Compile Include="Controls\Buttons\RoundedButton.Designer.cs">
       <DependentUpon>RoundedButton.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Buttons\TabButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\Buttons\TabButton.Designer.cs">
+      <DependentUpon>TabButton.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\RoundedTextBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -172,6 +178,9 @@
     <Folder Include="Interface\" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Controls\Buttons\TabButton.resx">
+      <DependentUpon>TabButton.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\RoundedTextBox.resx">
       <DependentUpon>RoundedTextBox.cs</DependentUpon>
     </EmbeddedResource>
