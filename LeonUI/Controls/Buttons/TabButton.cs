@@ -13,6 +13,8 @@ namespace LeonUI.Controls
     [DefaultEvent("Click")]
     public partial class TabButton : Label
     {
+
+        public static EventHandler TabChanged;
         
         private static TabButton activatedButton = null;
         /// <summary>
@@ -32,11 +34,15 @@ namespace LeonUI.Controls
                     activatedButton.Font = new Font(activatedButton.Font,FontStyle.Regular);
                     activatedButton.OnPaint(new PaintEventArgs(activatedButton.CreateGraphics(),activatedButton.ClientRectangle));
                 }
-                activatedButton = value;
-                value.ForeColor = ActiveColor;
-                value.Font = new Font(activatedButton.Font, FontStyle.Bold);
-                value.DrawBorder = true;
-                value.OnPaint(new PaintEventArgs(activatedButton.CreateGraphics(), activatedButton.ClientRectangle));
+                if (value != null)
+                {
+                    activatedButton = value;
+                    value.ForeColor = ActiveColor;
+                    value.Font = new Font(activatedButton.Font, FontStyle.Bold);
+                    value.DrawBorder = true;
+                    value.OnPaint(new PaintEventArgs(activatedButton.CreateGraphics(), activatedButton.ClientRectangle));
+                    TabChanged?.Invoke(value,new EventArgs());
+                }
             }
         }
         /// <summary>
