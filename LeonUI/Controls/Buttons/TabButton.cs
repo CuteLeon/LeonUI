@@ -38,6 +38,7 @@ namespace LeonUI.Controls
                 {
                     activatedButton = value;
                     value.ForeColor = ActiveColor;
+                    value.BackColor = DownColor;
                     value.Font = new Font(activatedButton.Font, FontStyle.Bold);
                     value.DrawBorder = true;
                     value.OnPaint(new PaintEventArgs(activatedButton.CreateGraphics(), activatedButton.ClientRectangle));
