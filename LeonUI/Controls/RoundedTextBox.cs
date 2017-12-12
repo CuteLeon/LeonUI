@@ -57,14 +57,14 @@ namespace LeonUI.Controls
             {
                 InnerTextBox.Font = value;
                 this.MinimumSize = new Size(45, InnerTextBox.Height + 12);
-                InnerTextBox.Top = (this.Height - InnerTextBox.Height) / 2;
+                InnerTextBox.Top = (this.Height - InnerTextBox.Height) / 2+1;
                 if (InnerTextBox.Multiline)
                 {
                     InnerTextBox.Top = 7;
                 }
                 else
                 {
-                    InnerTextBox.Top = (this.Height - InnerTextBox.Height) / 2;
+                    InnerTextBox.Top = (this.Height - InnerTextBox.Height) / 2+1;
                     InnerTextBox.Height = this.Height - 12;
                 }
             }
@@ -91,7 +91,7 @@ namespace LeonUI.Controls
                 }
                 else
                 {
-                    InnerTextBox.Top = (this.Height - InnerTextBox.Height) / 2;
+                    InnerTextBox.Top = (this.Height - InnerTextBox.Height) / 2+1;
                     InnerTextBox.Height = this.Height - 12;
                 }
             }
@@ -122,7 +122,7 @@ namespace LeonUI.Controls
 
             this.OnResize(null);
 
-            this.MinimumSize = new Size(43,34);
+            this.MinimumSize = new Size(43,32);
         }
 
         private void RoundedTextBox_Resize(object sender, EventArgs e)
@@ -134,7 +134,7 @@ namespace LeonUI.Controls
                 InnerTextBox.Height = this.Height - 12;
             }
             else
-                InnerTextBox.Top = (this.Height - InnerTextBox.Height) / 2;
+                InnerTextBox.Top = (this.Height - InnerTextBox.Height) / 2+1;
 
 
             if (this.Size.Equals(BGImage?.Size)) return;
