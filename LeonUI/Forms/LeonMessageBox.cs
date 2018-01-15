@@ -62,6 +62,7 @@ namespace LeonUI.Forms
         public LeonMessageBox(string Title, string Message, IconType IconType)
         {
             InitializeComponent();
+            this.FormClosed += delegate { this.Dispose(); };
 
             if (!DesignMode)
             {

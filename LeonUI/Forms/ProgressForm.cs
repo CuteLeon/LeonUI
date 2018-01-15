@@ -19,12 +19,14 @@ namespace LeonUI.Forms
         {
             set
             {
-                _workThread = new Thread(new ThreadStart(delegate () {
+                _workThread = new Thread(new ThreadStart(delegate ()
+                {
                     value();
                     _allowToClose = true;
                     this.DialogResult = DialogResult.OK;
                     this.Close();
-                }));
+                }))
+                { IsBackground=true};
             }
         }
 
@@ -70,12 +72,10 @@ namespace LeonUI.Forms
         public ProgressForm(string Title, string Message, bool AllowToCancel)
         {
             InitializeComponent();
+            this.FormClosed += delegate { this.Dispose(); };
 
-            if (!DesignMode)
-            {
-                CheckForIllegalCrossThreadCalls = false;
-                this.StartPosition = (Owner == null ? FormStartPosition.CenterScreen : FormStartPosition.CenterParent);
-            }
+            CheckForIllegalCrossThreadCalls = false;
+            this.StartPosition = (Owner == null ? FormStartPosition.CenterScreen : FormStartPosition.CenterParent);
 
             Text = Title;
             TitleLabel.Text = Title;
@@ -149,6 +149,7 @@ namespace LeonUI.Forms
             if (DesignMode) return;
             _allowToClose = true;
             _workThread?.Abort();
+            _workThread = null;
             ProgressTimer.Stop();
             new Thread(new ThreadStart(delegate
             {
