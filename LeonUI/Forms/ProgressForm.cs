@@ -26,7 +26,6 @@ namespace LeonUI.Forms
                     ProgressTimer.Stop();
                     this.DialogResult = DialogResult.OK;
                     this.Close();
-                    this.Dispose();
                 }))
                 { IsBackground=true};
             }
@@ -74,7 +73,6 @@ namespace LeonUI.Forms
         public ProgressForm(string Title, string Message, bool AllowToCancel)
         {
             InitializeComponent();
-            //this.FormClosed += delegate { this.Dispose(); };
 
             CheckForIllegalCrossThreadCalls = false;
             this.StartPosition = (Owner == null ? FormStartPosition.CenterScreen : FormStartPosition.CenterParent);
@@ -174,7 +172,6 @@ namespace LeonUI.Forms
             }
             if (_workThread.ThreadState == ThreadState.WaitSleepJoin || _workThread.ThreadState == ThreadState.Running) _workThread.Abort();
             if (this.DialogResult == DialogResult.None) this.DialogResult = DialogResult.Cancel;
-            this.Dispose();
         }
 
         int ImageIndex = 0;
