@@ -28,15 +28,23 @@ namespace LeonUI.Forms.Tests
                 BackgroundImageLayout = ImageLayout.Stretch,
                 BackgroundImage = Bitmap.FromFile(@"D:\MyPictures\DesktopBackground\gamersky_03origin_05_20171014155457C.jpg")
             };
-            HostForm.Shown += new EventHandler((s, e) =>
+            HostForm.Click += new EventHandler((s, e) =>
             {
-                HostForm.Activate();
                 new Thread(new ThreadStart(() =>
                 {
-                    Thread.Sleep(1000);
+                    //Thread.Sleep(1000);
                     HostForm.Invoke(new Action(()=> {
+                        ProgressForm progressForm = new ProgressForm("123", "234", true, new Action(() => { Thread.Sleep(1000000); }));
+                        //ProgressForm progressForm = new ProgressForm("123", "234", false, new Action(() => { Thread.Sleep(1000); }));
+                        //ProgressForm progressForm = new ProgressForm("123", "234", false, null as Action);
+                        //ProgressForm progressForm = new ProgressForm("123", "234 {0}", true, "123");
+                        progressForm.ShowDialog(HostForm);
+                        MessageBox.Show(progressForm.DialogResult.ToString());
+                        /*
                         LeonMessageBox leonMessageBox = new LeonMessageBox("123", "456", LeonMessageBox.IconType.Question);
-                        Debug.Print(leonMessageBox.ShowDialog(HostForm).ToString());
+                        leonMessageBox.ShowDialog(HostForm);
+                        MessageBox.Show(leonMessageBox.DialogResult.ToString());
+                         */
                     }));
                 })).Start();
             });

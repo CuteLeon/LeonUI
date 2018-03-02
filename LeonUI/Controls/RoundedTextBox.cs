@@ -16,6 +16,16 @@ namespace LeonUI.Controls
     [ToolboxBitmap(typeof(TextBox))]
     public partial class RoundedTextBox : UserControl
     {
+        public new bool Enabled
+        {
+            get => base.Enabled;
+            set
+            {
+                base.Enabled = value;
+            }
+        }
+
+
         private Rectangle CenterRectangle = new Rectangle(17, 16, 70, 2);
 
         public new event EventHandler TextChanged

@@ -19,15 +19,18 @@ namespace LeonUI.Forms
         {
             set
             {
-                _workThread = new Thread(new ThreadStart(delegate ()
+                if (value != null)
                 {
-                    value();
-                    _allowToClose = true;
-                    ProgressTimer.Stop();
-                    this.DialogResult = DialogResult.OK;
-                    this.Close();
-                }))
-                { IsBackground=true};
+                    _workThread = new Thread(new ThreadStart(delegate ()
+                    {
+                        value();
+                        _allowToClose = true;
+                        ProgressTimer.Stop();
+                        this.DialogResult = DialogResult.OK;
+                        this.Close();
+                    }))
+                    { IsBackground=true};
+                }
             }
         }
 
@@ -170,7 +173,8 @@ namespace LeonUI.Forms
             {
                 e.Cancel = true; return;
             }
-            if (_workThread.ThreadState == ThreadState.WaitSleepJoin || _workThread.ThreadState == ThreadState.Running) _workThread.Abort();
+            if(_workThread!=null)
+                if (_workThread.ThreadState == ThreadState.WaitSleepJoin || _workThread.ThreadState == ThreadState.Running) _workThread.Abort();
             if (this.DialogResult == DialogResult.None) this.DialogResult = DialogResult.Cancel;
         }
 
