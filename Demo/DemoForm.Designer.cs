@@ -274,6 +274,7 @@
             this.roundedButton1.TabIndex = 20;
             this.roundedButton1.Text = "roundedButton1";
             this.roundedButton1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.roundedButton1.Click += new System.EventHandler(this.roundedButton1_Click);
             // 
             // roundedCheckBox1
             // 
@@ -303,6 +304,7 @@
             this.largeButton1.TabIndex = 18;
             this.largeButton1.Text = "largeButton1";
             this.largeButton1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.largeButton1.Click += new System.EventHandler(this.largeButton1_Click);
             // 
             // bigButton1
             // 

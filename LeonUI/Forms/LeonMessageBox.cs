@@ -77,8 +77,8 @@ namespace LeonUI.Forms
             if (IconType == IconType.Question)
             {
                 CancelButton.Show();
-                CancelButton.Left = (this.Width-CancelButton.Width*2-30)/2;
-                OKButton.Left = CancelButton.Right +15;
+                CancelButton.Left = (BottomPanel.Width - CancelButton.Width * 2 - 30) / 2;
+                OKButton.Left = CancelButton.Right + 15;
             }
         }
 

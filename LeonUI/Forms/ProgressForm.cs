@@ -88,6 +88,7 @@ namespace LeonUI.Forms
             if (AllowToCancel)
             {
                 CloseButton.Show();
+                CancelButton.Left = (BottomPanel.Width - CancelButton.Width) / 2;
                 CancelButton.Show();
             }
         }
