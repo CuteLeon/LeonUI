@@ -8,6 +8,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeonUITests", "LeonUITests\LeonUITests.csproj", "{2A02310F-B579-47CA-9D02-0C3409E597D6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo", "Demo\Demo.csproj", "{DC7F0DA6-8EAA-4D08-8A6F-563DB0D59651}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3602016A-9AC0-468D-A01D-0B497F230ED5} = {3602016A-9AC0-468D-A01D-0B497F230ED5}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

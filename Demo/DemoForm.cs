@@ -16,5 +16,10 @@ namespace Demo
         {
             InitializeComponent();
         }
+
+        private void largeButton1_Click(object sender, EventArgs e)
+        {
+            new LeonUI.Forms.LeonMessageBox("123", "456", LeonUI.Forms.LeonMessageBox.IconType.Question).Show(this);
+        }
     }
 }

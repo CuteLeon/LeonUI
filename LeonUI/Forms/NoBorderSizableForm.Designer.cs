@@ -49,11 +49,12 @@
             this.TitlePanel.Controls.Add(this.MaxButton);
             this.TitlePanel.Controls.Add(this.CloseButton);
             this.TitlePanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.TitlePanel.Location = new System.Drawing.Point(5, 2);
-            this.TitlePanel.MaximumSize = new System.Drawing.Size(0, 24);
-            this.TitlePanel.MinimumSize = new System.Drawing.Size(0, 24);
+            this.TitlePanel.Location = new System.Drawing.Point(6, 2);
+            this.TitlePanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TitlePanel.MaximumSize = new System.Drawing.Size(0, 30);
+            this.TitlePanel.MinimumSize = new System.Drawing.Size(0, 30);
             this.TitlePanel.Name = "TitlePanel";
-            this.TitlePanel.Size = new System.Drawing.Size(274, 24);
+            this.TitlePanel.Size = new System.Drawing.Size(343, 30);
             this.TitlePanel.TabIndex = 0;
             // 
             // TitleLabel
@@ -62,10 +63,11 @@
             this.TitleLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TitleLabel.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.TitleLabel.ForeColor = System.Drawing.Color.White;
-            this.TitleLabel.Location = new System.Drawing.Point(24, 0);
+            this.TitleLabel.Location = new System.Drawing.Point(30, 0);
+            this.TitleLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.TitleLabel.Name = "TitleLabel";
-            this.TitleLabel.Padding = new System.Windows.Forms.Padding(3, 0, 3, 0);
-            this.TitleLabel.Size = new System.Drawing.Size(130, 24);
+            this.TitleLabel.Padding = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.TitleLabel.Size = new System.Drawing.Size(161, 30);
             this.TitleLabel.TabIndex = 6;
             this.TitleLabel.Text = "NoBorderSizableForm";
             this.TitleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -75,8 +77,9 @@
             this.IconLabel.Dock = System.Windows.Forms.DockStyle.Left;
             this.IconLabel.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.IconLabel.Location = new System.Drawing.Point(0, 0);
+            this.IconLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.IconLabel.Name = "IconLabel";
-            this.IconLabel.Size = new System.Drawing.Size(24, 24);
+            this.IconLabel.Size = new System.Drawing.Size(30, 30);
             this.IconLabel.TabIndex = 4;
             // 
             // MinButton
@@ -85,10 +88,11 @@
             this.MinButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("MinButton.BackgroundImage")));
             this.MinButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.MinButton.Dock = System.Windows.Forms.DockStyle.Right;
-            this.MinButton.Location = new System.Drawing.Point(154, 0);
-            this.MinButton.MinimumSize = new System.Drawing.Size(20, 20);
+            this.MinButton.Location = new System.Drawing.Point(191, 0);
+            this.MinButton.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.MinButton.MinimumSize = new System.Drawing.Size(25, 25);
             this.MinButton.Name = "MinButton";
-            this.MinButton.Size = new System.Drawing.Size(30, 24);
+            this.MinButton.Size = new System.Drawing.Size(38, 30);
             this.MinButton.TabIndex = 3;
             // 
             // RestoreButton
@@ -97,10 +101,11 @@
             this.RestoreButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("RestoreButton.BackgroundImage")));
             this.RestoreButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.RestoreButton.Dock = System.Windows.Forms.DockStyle.Right;
-            this.RestoreButton.Location = new System.Drawing.Point(184, 0);
-            this.RestoreButton.MinimumSize = new System.Drawing.Size(20, 20);
+            this.RestoreButton.Location = new System.Drawing.Point(229, 0);
+            this.RestoreButton.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.RestoreButton.MinimumSize = new System.Drawing.Size(25, 25);
             this.RestoreButton.Name = "RestoreButton";
-            this.RestoreButton.Size = new System.Drawing.Size(30, 24);
+            this.RestoreButton.Size = new System.Drawing.Size(38, 30);
             this.RestoreButton.TabIndex = 2;
             this.RestoreButton.Visible = false;
             // 
@@ -110,10 +115,11 @@
             this.MaxButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("MaxButton.BackgroundImage")));
             this.MaxButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.MaxButton.Dock = System.Windows.Forms.DockStyle.Right;
-            this.MaxButton.Location = new System.Drawing.Point(214, 0);
-            this.MaxButton.MinimumSize = new System.Drawing.Size(20, 20);
+            this.MaxButton.Location = new System.Drawing.Point(267, 0);
+            this.MaxButton.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.MaxButton.MinimumSize = new System.Drawing.Size(25, 25);
             this.MaxButton.Name = "MaxButton";
-            this.MaxButton.Size = new System.Drawing.Size(30, 24);
+            this.MaxButton.Size = new System.Drawing.Size(38, 30);
             this.MaxButton.TabIndex = 1;
             // 
             // CloseButton
@@ -122,22 +128,24 @@
             this.CloseButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("CloseButton.BackgroundImage")));
             this.CloseButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.CloseButton.Dock = System.Windows.Forms.DockStyle.Right;
-            this.CloseButton.Location = new System.Drawing.Point(244, 0);
-            this.CloseButton.MinimumSize = new System.Drawing.Size(20, 20);
+            this.CloseButton.Location = new System.Drawing.Point(305, 0);
+            this.CloseButton.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.CloseButton.MinimumSize = new System.Drawing.Size(25, 25);
             this.CloseButton.Name = "CloseButton";
-            this.CloseButton.Size = new System.Drawing.Size(30, 24);
+            this.CloseButton.Size = new System.Drawing.Size(38, 30);
             this.CloseButton.TabIndex = 0;
             // 
             // NoBorderSizableForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(355, 326);
             this.ControlBox = false;
             this.Controls.Add(this.TitlePanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "NoBorderSizableForm";
-            this.Padding = new System.Windows.Forms.Padding(5, 2, 5, 5);
+            this.Padding = new System.Windows.Forms.Padding(6, 2, 6, 6);
             this.Text = "NoBorderSizableForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.NoBorderSizableForm_FormClosing);
             this.Load += new System.EventHandler(this.NoBorderSizableForm_Load);

@@ -14,7 +14,7 @@ namespace LeonUI.Forms
     public partial class LeonMessageBox : Form
     {
         //TIPS: Form.KeyPreview=True 即可让窗体捕捉所有键盘事件，而不是控件
-
+        
         private Pen borderPen = new Pen(Color.DeepSkyBlue);
         /// <summary>
        /// 弹窗主题颜色
@@ -77,8 +77,8 @@ namespace LeonUI.Forms
             if (IconType == IconType.Question)
             {
                 CancelButton.Show();
-                CancelButton.Left = 80;
-                OKButton.Left = 196;
+                CancelButton.Left = (this.Width-CancelButton.Width*2-30)/2;
+                OKButton.Left = CancelButton.Right +15;
             }
         }
 
