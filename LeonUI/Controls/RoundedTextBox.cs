@@ -28,6 +28,12 @@ namespace LeonUI.Controls
 
         private Rectangle CenterRectangle = new Rectangle(17, 16, 70, 2);
 
+        public new event KeyPressEventHandler KeyPress
+        {
+            add => InnerTextBox.KeyPress += value;
+            remove => InnerTextBox.KeyPress -= value;
+        }
+
         public new event EventHandler TextChanged
         {
             add => InnerTextBox.TextChanged += value;
